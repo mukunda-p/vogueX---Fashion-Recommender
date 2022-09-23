@@ -33,4 +33,7 @@ def create_app(test_config=None):
     def hello_rest():
         return jsonify({"status" : 200})
 
+    from . import dress
+    app.register_blueprint(dress.dressbp)
+
     return app
