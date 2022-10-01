@@ -10,4 +10,3 @@ class User(db.Model, UserMixin):
     gender = db.Column(db.String(20))
     phone_number = db.Column(db.Integer)
     password = db.Column(db.String(150))
-    
