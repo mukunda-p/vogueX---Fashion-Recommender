@@ -8,28 +8,24 @@ drop table preference;
 drop table recommendation;
 
 create table user(
-    userid varchar(255) not null primary key,
-    password varchar(255) not null
-);
-
-create table user_details (
-    userid varchar(255) not null primary key,
-    firstname varchar(255) not null,
-    lastname varchar(255) not null,
+    id int not null primary key AUTO_INCREMENT,
+    email varchar(255) not null unique,
+    first_name varchar(255) not null,
+    last_name varchar(255) not null,
+    gender varchar(255) not null,
+    phone_number varchar(255) not null unique,
+    password varchar(255) not null,
     age int,
-    city varchar(255) not null,
-
-    foreign key (userid) references user(userid)
+    city varchar(255) not null
 );
-
 create table preference ( 
-    userid varchar(255)  not null, 
-    preferences json not null, 
-    primary key (userid), 
-    foreign key (userid) references user(userid));
+    userid int  not null,
+    preferences json not null,
+    primary key (userid),
+    foreign key (userid) references user(id));
 
 create table recommendation (
-    userid varchar(255) not null, 
-    links json not null, 
+    userid int not null,
+    links json not null,
     primary key (userid),
-    foreign key (userid) references user(userid));
+    foreign key (userid) references user(id));
