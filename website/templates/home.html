@@ -13,12 +13,22 @@
   </li>
   {% endfor %}
 </ul> -->
-<form method="POST">
-
+<form action="/" method="POST">
   <input type="text" id="occasion-text" name="occasion-text" placeholder="What's the occasion?" class="form-control">
   <br />
-  <div align="center">
-    <button type="submit" class="btn btn-primary btn-circle btn-xl">Go</button>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div align="center">
+            <button type="submit" class="btn btn-primary btn-circle btn-xl">Go</button>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div align="center">
+            <button type="submit" class="btn btn-success btn-circle btn-xl">Lucky</button>
+        </div>
+      </div>
+    </div>
   </div>
 </form>
 {% endblock %}

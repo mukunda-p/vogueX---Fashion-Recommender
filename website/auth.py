@@ -34,9 +34,11 @@ def logout():
     logout_user()
     return redirect(url_for('auth.login'))
 
-
+# get and post both come to the same aciton. When we hit the sign up end point on the URL, a get request is generated.
+# This generates the view. Submitting the form hits the same action. We run the logic for post now.
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
+    # For the post request.
     if request.method == 'POST':
         email = request.form.get('email')
         first_name = request.form.get('firstName')
@@ -71,4 +73,5 @@ def sign_up():
             flash('Account created!', category='success')
             return redirect(url_for('views.home'))
 
+    # For get request.
     return render_template("sign_up.html", user=current_user)
