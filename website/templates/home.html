@@ -2,33 +2,32 @@
 
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<h1 align="center">Welcome, {{ current_user.first_name }}</h1>
-<!-- <ul class="list-group list-group-flush" id="notes">
-  {% for note in user.notes %}
-  <li class="list-group-item">
-    {{ note.data }}
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </li>
-  {% endfor %}
-</ul> -->
-<form action="/" method="POST">
-  <input type="text" id="occasion-text" name="occasion-text" placeholder="What's the occasion?" class="form-control">
-  <br />
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <div align="center">
-            <button type="submit" class="btn btn-primary btn-circle btn-xl">Go</button>
+<div class="container">
+    <div class="row top-buffer">
+        <div class="col-sm">
+            
         </div>
-      </div>
-      <div class="col-sm">
-        <div align="center">
-            <button type="submit" class="btn btn-success btn-circle btn-xl">Lucky</button>
-        </div>
-      </div>
     </div>
-  </div>
-</form>
+
+    <form action="/" method="POST">
+        <div class="row top-buffer">
+            <div class="col-sm">
+                <input type="text" class="input-klass hover-zoom" id="occasion-text" name="occasion-text" placeholder="What's the occasion?">
+                <br />
+            </div>
+        </div>
+        <div class="row top-buffer">
+        <div class="col-sm">
+            <div align="center">
+                <button type="submit" class="btn btn-light btn-circle btn-xl">Go</button>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div align="center">
+                <button type="submit" class="btn btn-dark btn-circle btn-xl">Lucky</button>
+            </div>
+        </div>
+        </div>
+    </form>
+</div>
 {% endblock %}
