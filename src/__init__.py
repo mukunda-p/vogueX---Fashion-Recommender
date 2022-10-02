@@ -34,6 +34,8 @@ def create_app(test_config=None):
         return jsonify({"status" : 200})
 
     from . import dress
+    from . import preferences
     app.register_blueprint(dress.dressbp)
+    app.register_blueprint(preferences.preferencesbp)
 
     return app
