@@ -4,6 +4,8 @@ from flask import (
     Blueprint, flash, g, jsonify, redirect, render_template, request, session, url_for, request
 )
 from werkzeug.security import check_password_hash, generate_password_hash
+
+from website import contracts
 from . import models
 from . import db_overlay
 preferencesbp = Blueprint('preferences', __name__, url_prefix='/')
@@ -87,6 +89,16 @@ def get_preferences():
             'blue', 'black', 'yellow'
         ]
     }
+
+    if contracts.SessionParameters.USERID not in session:
+        return {}, 403
+
+    ### query the preferences table and check if preferences have been saved or not
+    userid = session[contracts.SessionParameters.USERID]
+    import pdb; pdb.set_trace()
+    preferencesObj = models.Preferences.query_filter(userid = userid).first()
+    if not preferencesObj:
+        return jsonify({"error_code" : 2, "error" : "preferences not saved"}), 400
     
     x = jsonify(preferences)
     return x
@@ -125,7 +137,7 @@ Response :
 @preferencesbp.route("/preferences", methods=['POST'])
 def post_preferences():
     req = request.json
-    userid = req['userid']
+    userid = session['userid']
     preferenceObject = models.Preferences.query.filter_by(userid = userid).first()
 
     if not preferenceObject:
