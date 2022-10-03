@@ -40,6 +40,7 @@ def login():
 def logout():
     logout_user()
     import pdb; pdb.set_trace()
+    session.pop(contracts.SessionParameters.USERID, None)
     return redirect(url_for('auth.login'))
 
 
