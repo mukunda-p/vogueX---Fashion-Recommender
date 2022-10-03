@@ -21,6 +21,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
+                import pdb; pdb.set_trace()
                 session[contracts.SessionParameters.USERID] = user.get_id()
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))

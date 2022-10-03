@@ -1,43 +1,63 @@
-from geopy.geocoders import Nominatim
-from src import weather
-from src import search
-from weather import api as wapi
-from search import api as sapi
+# from geopy.geocoders import Nominatim
+import pdb; pdb.set_trace()
+
+from . import utils
+from . import models
+from website import preferences
+import json
+from . import contracts
+
+default_preferences = {
+    'male' : [
+        'blue shirt', 'black pant' 
+    ],
+    'female' : [
+        'blue shirt', 'black pant'
+    ]
+}
+
 ### module to write helper functions for APIs
 class PreferencesHelper:
-    def givePreferences(userid):
-        pass
+    def givePreferences(userid, occasion):
+        preferenceObj = models.Preference.query.filter_by(userid=userid).first()
+        preferences = json.loads(preferenceObj.preferences)
+        if occasion in preferences:
+            return preferences[occasion]
+        return None
 
 class WeatherHelper:
     def __init__(self) -> None:
-        self.geolocator = Nominatim(user_agent="Your_Name")
-        self.weatherAPI = wapi.WeatherAPI()
+        # self.geolocator = Nominatim(user_agent="Your_Name")
+        self.weatherAPI = utils.WeatherAPI()
 
-    def giveLocation(self, userid, city = None):
-        # if city is none query the profile from the database and see if there is a city.
-        # if city is not given chill
-        location = self.geolocator.geocode(city)
-        return (location.longitude, location.latitude)
+    # def giveLocation(self, userid, city = None):
+    #     # if city is none query the profile from the database and see if there is a city.
+    #     # if city is not given chill
+    #     location = self.geolocator.geocode(city)
+    #     return (location.longitude, location.latitude)
 
     def getWeather(self, city = None):
-        coordinates = self.giveLocation(city)
-        weather = self.weatherAPI.getCurrentWeather(coordinates.longitude, coordinates.latitude)
+        # coordinates = self.giveLocation(city)
+        weather = self.weatherAPI.getCurrentWeather(city=city)
         return weather
 
 class RecommendationHelper:
     def __init__(self) -> None:
-        self.searchAPIObj = sapi.SearchImages()
+        self.searchAPIObj = utils.SearchImages()
         self.weatherHelper = WeatherHelper()
 
-    def giveRecommendations(self, occasion = None, city = None):
-        preferences = PreferencesHelper.givePreferences(occasion)
+    def giveRecommendations(self, userid, gender, occasion = None, city = None):
+        preferences = PreferencesHelper.givePreferences(userid, occasion)
         query_keywords = []
-
         weather = self.weatherHelper.getWeather(city)
-        for pref in preferences:
-            query_keywords.append(pref['color'] + ' ' + pref['dress_type'])
-        
-        query_keywords.append(weather['temperature_type'])
+        if not preferences:
+            query_keywords.append(gender)
+        else:
+            for pref in preferences:
+                query_keywords.append(pref['color'] + ' ' + pref['type'])
+        if not occasion:
+            query_keywords.append(occasion)
+        query_keywords.append( 'for' + weather + 'weather')
         links = self.searchAPIObj.image_search(query_keywords)
         return links
 
