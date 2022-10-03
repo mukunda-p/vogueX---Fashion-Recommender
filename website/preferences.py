@@ -113,21 +113,19 @@ Request :
 
 {
     "preferences" : {
-    "formal" :  [{
-            "type" : "suit",
-            "color" : "black",
-            
-        }],
-    "beach" : [
-        {
-            "type" : "tshirt",
-            "color" : "blue",
-        }],
-    "date" :[
-        {
-            "type" : "shirt",
-            "color" : "navy-blue",
-        }]
+        "formal" :  [{
+                "type" : "suit",
+                "color" : "black",
+                
+            }],
+        "beach" : [{
+                "type" : "tshirt",
+                "color" : "blue",
+            }],
+        "date" :[{
+                "type" : "shirt",
+                "color" : "navy-blue",
+            }]
     }
 }
 
@@ -142,12 +140,11 @@ Response :
 @preferencesbp.route("/preferences", methods=['POST'])
 def post_preferences():
     req = request.json
-
+    import pdb; pdb.set_trace()
     if contracts.SessionParameters.USERID not in session:
         return jsonify({"error": "user not logged in", "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN }), 403
 
     userid = session['userid']
-
     user_preferences = "{}"
 
     if contracts.PreferenceContractRequest.PREFERENCES in req:
@@ -155,7 +152,6 @@ def post_preferences():
 
     preferenceObject = models.Preference.query.filter_by(userid = int(userid)).first()
     if not preferenceObject:
-        # create a new one
         preferenceObject = models.Preference(userid=int(userid), preferences = json.dumps(user_preferences))
     db.session.add(preferenceObject)
     db.session.commit()
