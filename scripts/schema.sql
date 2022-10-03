@@ -1,3 +1,5 @@
+--- create the name of the database as fashion - user: fashion, password : fashion
+
 drop database fashion;
 create database fashion;
 use fashion;
@@ -20,7 +22,7 @@ create table user(
 );
 create table preference ( 
     userid int  not null,
-    preferences json not null,
+    preferences longtext not null,
     primary key (userid),
     foreign key (userid) references user(id));
 
