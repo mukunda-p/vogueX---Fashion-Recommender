@@ -42,7 +42,6 @@ def get_recommendations():
     from . import helper
     help = helper.RecommendationHelper()
     links = help.giveRecommendations(userid, user.gender, occasion, city)
-    import pdb; pdb.set_trace()
 
     recommendations = dict()
     recommendations[contracts.RecommendationContractResponse.LINKS] = []

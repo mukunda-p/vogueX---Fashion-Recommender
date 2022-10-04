@@ -20,7 +20,6 @@ default_preferences = {
 class PreferencesHelper:
     def givePreferences(userid, occasion):
         preferenceObj = models.Preference.query.filter_by(userid=userid).first()
-        import pdb; pdb.set_trace()
         preferences = json.loads(str(preferenceObj.preferences))
         if occasion in preferences:
             return preferences[occasion]

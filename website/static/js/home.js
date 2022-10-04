@@ -11,7 +11,15 @@ $(document).ready(function(){
             type: "POST",
             url: "/recommendations",
             data: formData,
-            success: function(){},
+            success: function(data){
+                debugger;
+                var str = "";
+                for(var i = 0; i < data["links"].length; i++){
+                    str += data["links"][i] + " || ";
+                }
+                var redirectUrl = window.location.protocol + "//" + window.location.host + "/results?" + str;
+                location.href = redirectUrl;
+            },
             dataType: "json",
             contentType : "application/json"
         });

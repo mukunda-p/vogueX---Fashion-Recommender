@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, request, flash, jsonify
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for, session
+
 from flask_login import login_required, current_user
 from . import db
 import json
@@ -11,3 +12,19 @@ views = Blueprint('views', __name__)
 def home():
     return render_template("home.html", user=current_user)
 
+@views.route('/procResult', methods=['POST'])
+@login_required
+def procResult():
+    if request.method == 'POST':
+        linksData = request.json["resultLinks"]["links"]
+        strLinks = ""
+        for links in linksData:
+            strLinks += links + " || "
+        linksData = strLinks
+        return redirect(url_for("views.results", user=current_user, data=linksData))
+
+@views.route('/results', methods=['POST', 'GET'])
+@login_required
+def results():
+    linksData = str(request.args.to_dict())[2:-2].split(" || ")
+    return render_template("results.html", user=current_user, ldata=linksData, enumerate=enumerate)
