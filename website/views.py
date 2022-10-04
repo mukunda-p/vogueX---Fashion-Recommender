@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for, session
 
 from flask_login import login_required, current_user
+from . import models
 from . import db
 import json
 
@@ -33,4 +34,11 @@ def results():
 @views.route('/profile', methods=['POST', 'GET'])
 @login_required
 def profile():
-    return render_template("profile.html", user=current_user)
+    preferenceObject = models.Preference.query.filter_by(userid = int(current_user.id)).first()
+    if preferenceObject:
+        prefData = json.loads(preferenceObject.preferences)
+    else:
+        preferenceObject = models.Preference(userid=int(current_user.id), preferences = "")
+        prefData = {}
+
+    return render_template("profile.html", user=current_user, prefData=prefData)

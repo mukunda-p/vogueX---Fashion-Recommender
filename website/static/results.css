@@ -29,7 +29,7 @@
   grid-template-rows: min-content;
   gap: var(--_spacer);
   padding: var(--_spacer);
-  background: var(--surface-3);
+  background: black;
   border-radius: var(--radius-2);
   box-shadow: var(--shadow-2);
 }
@@ -72,12 +72,8 @@ button > img {
   box-shadow: var(--shadow-2);
 }
 
-.page-title {
-  font-size: var(--font-size-fluid-3);
-}
-
 .page-subtitle {
-  font-size: var(--font-size-fluid-1);
+  font-size: 20px;
 }
 
 .section-title {
@@ -95,7 +91,7 @@ button > img {
     background: transparent;
 }
 body {
-    background-image: url(images/bg.jpeg);
+    background-image: url(images/bgresult.jpg);
     background-size: cover;
     background-repeat:   no-repeat;
     background-position: center center;
@@ -108,16 +104,74 @@ body.modal-open .resultbg{
     -ms-filter: blur(1px);
     filter: blur(40px);
 }
-
-.modal-body{
-    border-color: black;
-    border-width: 4px;
+.top-buffer {
+  margin-top:100px;
 }
-
+.top-buffer-md{
+  margin-top: 50px;
+}
+.top-buffer-sm{
+  margin-top: 50px;
+}
+.modal-body{
+    border-color: rgb(159, 147, 153);
+    border-width: 3px;
+}
+.page-title{
+  font-size: var(--font-size-fluid-2);
+  color: #111;
+}
 body.modal-open .media-element{
     -webkit-filter: blur(1px);
     -moz-filter: blur(1px);
     -o-filter: blur(1px);
     -ms-filter: blur(1px);
     filter: blur(40px);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.text span {
+  font-size: 60px;
+  display: inline-block;
+  text-align: center;
+  width: 60px;
+  text-transform: uppercase;
+  position: relative;
+  color: #111;
+  z-index: 5;
+}
+
+.text span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgb(255, 208, 0);
+  z-index: -1;
+  box-shadow: 0 5px 5px #111;
+}
+
+.text:hover span::before {
+  animation: fillBg 1s ease forwards;
+  animation-delay: calc(100ms * var(--i));
+}
+
+@keyframes fillBg {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+    transform: rotate(calc(15deg * var(--i)));
+  }
+}
+.blendbtn{
+  mix-blend-mode: luminosity;
 }

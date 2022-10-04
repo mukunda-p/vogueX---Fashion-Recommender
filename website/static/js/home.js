@@ -12,7 +12,6 @@ $(document).ready(function(){
             url: "/recommendations",
             data: formData,
             success: function(data){
-                debugger;
                 var str = "";
                 for(var i = 0; i < data["links"].length; i++){
                     str += data["links"][i] + " || ";
@@ -23,5 +22,10 @@ $(document).ready(function(){
             dataType: "json",
             contentType : "application/json"
         });
+    });
+    $(".recoButton1").click(function(e){
+        debugger;
+        var loader= document.getElementById( 'center' )
+        loader.style.display = '';
     });
 });
