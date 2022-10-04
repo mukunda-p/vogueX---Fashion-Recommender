@@ -18,27 +18,31 @@ payload = {
 
 @recommendationsbp.route("/recommendations", methods=['POST'])
 def get_recommendations():
+    
     req_json_body = request.json
     city = ''
     occasion = ''
     # userid = '3'
+
+
     if contracts.SessionParameters.USERID not in session:
         return jsonify({"error": "user not logged in", "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN }), 403
     
     userid = session[contracts.SessionParameters.USERID]
+    user = models.User.query.filter_by(id=int(userid)).first()
     if contracts.RecommendationContractRequest.CITY_KEY in req_json_body:
         city = req_json_body[contracts.RecommendationContractRequest.CITY_KEY]
     else:
         # take from the user table
-        user = models.User.query.filter_by(id=int(userid)).first()
         city = user.city
     
     if contracts.RecommendationContractRequest.OCCASION_KEY in req_json_body:
         occasion = req_json_body[contracts.RecommendationContractRequest.OCCASION_KEY]
-
+   
     from . import helper
     help = helper.RecommendationHelper()
     links = help.giveRecommendations(userid, user.gender, occasion, city)
+    import pdb; pdb.set_trace()
 
     recommendations = dict()
     recommendations[contracts.RecommendationContractResponse.LINKS] = []

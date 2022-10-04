@@ -99,7 +99,7 @@ def get_preferences():
         return jsonify({"error": "user not logged in", "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN }), 403
     ### query the preferences table and check if preferences have been saved or not
     userid = session[contracts.SessionParameters.USERID]
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     preferencesObj = models.Preference.query.filter_by(userid = int(userid)).first()
     if not preferencesObj:
         return jsonify({"error_code" : contracts.ErrorCodes.OBJECT_NOT_SAVED, "error" : "preferences not saved"}), 400
@@ -140,7 +140,7 @@ Response :
 @preferencesbp.route("/preferences", methods=['POST'])
 def post_preferences():
     req = request.json
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     if contracts.SessionParameters.USERID not in session:
         return jsonify({"error": "user not logged in", "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN }), 403
 
