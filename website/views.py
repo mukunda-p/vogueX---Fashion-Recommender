@@ -28,3 +28,9 @@ def procResult():
 def results():
     linksData = str(request.args.to_dict())[2:-2].split(" || ")
     return render_template("results.html", user=current_user, ldata=linksData, enumerate=enumerate)
+
+
+@views.route('/profile', methods=['POST', 'GET'])
+@login_required
+def profile():
+    return render_template("profile.html", user=current_user)

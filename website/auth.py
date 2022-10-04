@@ -81,3 +81,30 @@ def sign_up():
 
     # For get request.
     return render_template("sign_up.html", user=current_user)
+
+
+
+@auth.route('/profile-update', methods=['GET', 'POST'])
+def profile_update():
+    # For the post request.
+    if request.method == 'POST':
+        phone_number = request.form.get('phoneNumber')
+        city = request.form.get('city')
+        age = request.form.get('age')
+        userid = request.form.get('userid')
+        import pdb; pdb.set_trace()
+
+        user = User.query.filter_by(id=int(userid)).first()
+
+        if int(age) < 18 or int(age) > 90:
+            flash('Please enter a valid age', category='error')
+        else:
+            user.age = age
+            user.city = city
+            user.phone_number = phone_number
+            db.session.commit()
+            flash('Account updated!', category='success')
+            return redirect(url_for('views.home'))
+
+    # For get request.
+    return render_template("profile.html", user=current_user)

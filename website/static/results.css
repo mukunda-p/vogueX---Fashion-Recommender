@@ -64,10 +64,6 @@ button > img {
   gap: var(--size-3);
 }
 
-.top-buffer {
-    margin-top:100px;
-}
-
 .page-header {
   padding-block: var(--size-9);
   margin-block-end: var(--size-9);
