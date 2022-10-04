@@ -12,7 +12,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
     #app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://fashion:fashion@localhost/fashion'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:qqqqqqqq@localhost/fashion'
 
     db.init_app(app)
 

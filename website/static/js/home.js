@@ -24,7 +24,6 @@ $(document).ready(function(){
         });
     });
     $(".recoButton1").click(function(e){
-        debugger;
         var loader= document.getElementById( 'center' )
         loader.style.display = '';
     });

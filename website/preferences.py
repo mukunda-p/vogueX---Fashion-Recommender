@@ -100,7 +100,6 @@ def get_preferences():
         return jsonify({"error": "user not logged in", "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN }), 403
     ### query the preferences table and check if preferences have been saved or not
     userid = session[contracts.SessionParameters.USERID]
-    # import pdb; pdb.set_trace()
     preferencesObj = models.Preference.query.filter_by(userid = int(userid)).first()
     if not preferencesObj:
         return jsonify({"error_code" : contracts.ErrorCodes.OBJECT_NOT_SAVED, "error" : "preferences not saved"}), 400
@@ -140,12 +139,9 @@ Response :
 
 def build_json(formData):
     newDict = {}
-    import pdb; pdb.set_trace()
     for key in formData:
-        import pdb; pdb.set_trace()
         newDict[key.replace("\'", "")]=formData[key].replace("\'", "")
     jsonData = {"preferences": str(newDict).replace("\'", "\"")}
-    import pdb; pdb.set_trace()
     return jsonData
 
 @preferencesbp.route("/preferences", methods=['POST'])
