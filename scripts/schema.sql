@@ -20,7 +20,41 @@ create table user(
     age int,
     city varchar(255) not null
 );
-create table preference ( 
+create table preference (
+    userid int  not null,
+    preferences longtext not null,
+    primary key (userid),
+    foreign key (userid) references user(id));
+
+create table recommendation (
+    userid int not null,
+    links json not null,
+    primary key (userid),
+    foreign key (userid) references user(id));
+
+
+
+drop database fashion_test;
+create database fashion_test;
+use fashion_test;
+
+drop table user;
+drop table user_details;
+drop table preference;
+drop table recommendation;
+
+create table user(
+    id int not null primary key AUTO_INCREMENT,
+    email varchar(255) not null unique,
+    first_name varchar(255) not null,
+    last_name varchar(255) not null,
+    gender varchar(255) not null,
+    phone_number varchar(255) not null unique,
+    password varchar(255) not null,
+    age int,
+    city varchar(255) not null
+);
+create table preference (
     userid int  not null,
     preferences longtext not null,
     primary key (userid),
