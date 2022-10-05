@@ -21,7 +21,6 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
-                import pdb; pdb.set_trace()
                 session[contracts.SessionParameters.USERID] = user.get_id()
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
@@ -40,9 +39,11 @@ def logout():
     session.pop(contracts.SessionParameters.USERID, None)
     return redirect(url_for('auth.login'))
 
-
+# get and post both come to the same aciton. When we hit the sign up end point on the URL, a get request is generated.
+# This generates the view. Submitting the form hits the same action. We run the logic for post now.
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
+    # For the post request.
     if request.method == 'POST':
         email = request.form.get('email')
         first_name = request.form.get('firstName')
@@ -77,4 +78,31 @@ def sign_up():
             flash('Account created!', category='success')
             return redirect(url_for('views.home'))
 
+    # For get request.
     return render_template("sign_up.html", user=current_user)
+
+
+
+@auth.route('/profile-update', methods=['GET', 'POST'])
+def profile_update():
+    # For the post request.
+    if request.method == 'POST':
+        phone_number = request.form.get('phoneNumber')
+        city = request.form.get('city')
+        age = request.form.get('age')
+        userid = request.form.get('userid')
+
+        user = User.query.filter_by(id=int(userid)).first()
+
+        if int(age) < 18 or int(age) > 90:
+            flash('Please enter a valid age', category='error')
+        else:
+            user.age = age
+            user.city = city
+            user.phone_number = phone_number
+            db.session.commit()
+            flash('Account updated!', category='success')
+            return redirect(url_for('views.home'))
+
+    # For get request.
+    return render_template("profile.html", user=current_user)

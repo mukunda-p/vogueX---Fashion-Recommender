@@ -1,5 +1,4 @@
 # from geopy.geocoders import Nominatim
-import pdb; pdb.set_trace()
 
 from . import utils
 from . import models
@@ -20,7 +19,7 @@ default_preferences = {
 class PreferencesHelper:
     def givePreferences(userid, occasion):
         preferenceObj = models.Preference.query.filter_by(userid=userid).first()
-        preferences = json.loads(preferenceObj.preferences)
+        preferences = json.loads(str(preferenceObj.preferences))
         if occasion in preferences:
             return preferences[occasion]
         return None

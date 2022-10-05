@@ -6,7 +6,6 @@ class Config:
     def __init__(self) -> None:
         self.API_KEY = "AIzaSyDAm6ijCQKVo9w75JroZnU5nFMjI3SVP2Y"
         self.PROJ_CX = "525f979309bbd4a07"
-
 class QueryBuilder:
     def __init__(self) -> None:
         pass
@@ -32,7 +31,7 @@ class SearchImages:
             num_of_records = self.default_num_of_records
 
         query = self.query_builder.getQueryString(query_keywords)
-        print ("Searching ", query)
+        print ("Searchingx ", query)
         _search_params = {
             'q': query,
             'num' : num_of_records

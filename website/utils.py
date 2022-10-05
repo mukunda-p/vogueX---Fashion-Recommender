@@ -49,7 +49,7 @@ class SearchImages:
             num_of_records = self.default_num_of_records
 
         query = self.query_builder.getQueryString(query_keywords)
-        print ("Searching ", query)
+        print ("Searchingy ", query)
         _search_params = {
             'q': query,
             'num' : num_of_records

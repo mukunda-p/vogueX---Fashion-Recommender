@@ -5,6 +5,7 @@ from flask import (
     Blueprint, flash, g, jsonify, redirect, render_template, request, session, url_for, request
 )
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask_login import login_required, current_user
 
 from website import contracts
 from . import models
@@ -99,7 +100,6 @@ def get_preferences():
         return jsonify({"error": "user not logged in", "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN }), 403
     ### query the preferences table and check if preferences have been saved or not
     userid = session[contracts.SessionParameters.USERID]
-    import pdb; pdb.set_trace()
     preferencesObj = models.Preference.query.filter_by(userid = int(userid)).first()
     if not preferencesObj:
         return jsonify({"error_code" : contracts.ErrorCodes.OBJECT_NOT_SAVED, "error" : "preferences not saved"}), 400
@@ -137,10 +137,20 @@ Response :
 '''
 
 
+def build_json(formData):
+    newDict = {}
+    for key in formData:
+        newDict[key.replace("\'", "")]=formData[key].replace("\'", "")
+    jsonData = {"preferences": str(newDict).replace("\'", "\"")}
+    return jsonData
+
 @preferencesbp.route("/preferences", methods=['POST'])
+@login_required
 def post_preferences():
-    req = request.json
-    import pdb; pdb.set_trace()
+    if request.content_type == 'application/x-www-form-urlencoded':
+        req = build_json(request.form.to_dict())
+    else:
+        req = request.json
     if contracts.SessionParameters.USERID not in session:
         return jsonify({"error": "user not logged in", "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN }), 403
 
@@ -153,7 +163,12 @@ def post_preferences():
     preferenceObject = models.Preference.query.filter_by(userid = int(userid)).first()
     if not preferenceObject:
         preferenceObject = models.Preference(userid=int(userid), preferences = json.dumps(user_preferences))
-    db.session.add(preferenceObject)
+        db.session.add(preferenceObject)
+    else:
+        preferenceObject.preferences = user_preferences
     db.session.commit()
-
-    return jsonify({"status" : 200}), 200
+    if(request.content_type == 'application/x-www-form-urlencoded'):
+        flash('Preferences updated!', category='success')
+        return render_template("home.html", user=current_user)
+    else:
+        return jsonify({"status" : 200}), 200
