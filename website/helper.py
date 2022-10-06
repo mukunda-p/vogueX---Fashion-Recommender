@@ -56,9 +56,12 @@ class RecommendationHelper:
         else:
             for pref in preferences:
                 query_keywords.append(pref['color'] + ' ' + pref['type'])
+        # if not occasion:
+
+        #     query_keywords.append(occasion)
         if not occasion:
-            query_keywords.append(occasion)
-        query_keywords.append( 'for' + weather + 'weather')
+            occasion = "regular event"
+        query_keywords.append( 'in ' + weather + ' weather' + ' to a '+occasion)
         links = self.searchAPIObj.image_search(query_keywords)
         return links
 

@@ -34,7 +34,7 @@ class QueryBuilder:
         for q in queries:
             return_query_string += q + ' '
 
-        return return_query_string
+        return "suggested dress for " + return_query_string
 
 class SearchImages:
     def __init__(self) -> None:
