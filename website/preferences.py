@@ -14,8 +14,8 @@ preferencesbp = Blueprint('preferences', __name__, url_prefix='/')
 
 @preferencesbp.route("/default-preferences", methods = ["GET"])
 def get_default_preferences():
-    if contracts.SessionParameters.USERID not in session:
-        return jsonify({"error": "user not logged in", "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN }), 403
+    # if contracts.SessionParameters.USERID not in session:
+    #     return jsonify({"error": "user not logged in", "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN }), 403
     default_preferences = {
         "male" : {
             "preferences" : [
