@@ -18,11 +18,13 @@ default_preferences = {
 ### module to write helper functions for APIs
 class PreferencesHelper:
     def givePreferences(userid, occasion):
-        preferenceObj = models.Preference.query.filter_by(userid=userid).first()
-        preferences = json.loads(str(preferenceObj.preferences))
-        if occasion in preferences:
-            return preferences[occasion]
-        return None
+        try:
+            preferenceObj = models.Preference.query.filter_by(userid=userid).first()
+            preferences = json.loads(str(preferenceObj.preferences))
+            if occasion in preferences:
+                return preferences[occasion]
+        except:
+            return None
 
 class WeatherHelper:
     def __init__(self) -> None:

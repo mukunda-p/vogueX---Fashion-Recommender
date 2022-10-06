@@ -8,6 +8,8 @@ setup(
     install_requires=[
         'flask',
         'pytest',
-        'flask_testing'
+        'flask_testing',
+        'flask_login',
+        'pymysql'
     ],
 )
