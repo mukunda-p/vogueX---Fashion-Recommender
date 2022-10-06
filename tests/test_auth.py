@@ -38,3 +38,34 @@ def test_login_post(app):
 
     response = client.post(url, data=data, headers=headers)
     assert response.status_code == 200
+
+def test_signup_get(app):
+    client = app.test_client()
+    url = "/sign-up"
+    response = client.get(url)
+    assert response.status_code, 200
+
+def test_signup_post(app):
+    client = app.test_client()
+    url = "/sign-up"
+    mimetype = 'application/x-www-form-urlencoded'
+    headers = {
+        'Content-Type': mimetype,
+        'Accept': mimetype
+    }
+
+    # This user is not present in the db
+    data = {
+        'email': 'test@gmail.com',
+        'firstName': 'test_user',
+        'lastName': 'test_end_name',
+        'gender': 'unknown',
+        'phoneNumber': 99999999999,
+        'password1': 'password123',
+        'password2': 'password123',
+        'age': 25,
+        'city': 'Raleigh'
+    }
+
+    response = client.post(url, data=data, headers=headers)
+    assert response.status_code, 200
