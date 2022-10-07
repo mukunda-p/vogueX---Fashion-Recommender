@@ -9,3 +9,4 @@ jobs:
         uses: tonybajan/flake8-check-action@v1.2.0
         with:
           repotoken: ${{ secrets.GITHUB_TOKEN }}
+          ignore: E501,E402,E722
