@@ -23,7 +23,7 @@ def login():
                 flash("Logged in successfully!", category="success")
                 session[contracts.SessionParameters.USERID] = user.get_id()
                 login_user(user, remember=True)
-                return render_template("home.html",user=user)
+                return render_template("home.html", user=user)
             else:
                 flash("Incorrect password, try again.", category="error")
         else:
