@@ -19,7 +19,7 @@
 
 [![github workflow](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/style_checker.yml/badge.svg)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/style_checker.yml)
 [![github workflow](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/main.yml/badge.svg)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/main.yml)
-[![github workflow](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/code_cov.yml/badge.svg)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/code_cov.yml)
+
 
 
 Contributors:
