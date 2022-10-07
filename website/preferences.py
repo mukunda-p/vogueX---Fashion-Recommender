@@ -147,6 +147,7 @@ def build_json(formData):
 @preferencesbp.route("/preferences", methods=['POST'])
 @login_required
 def post_preferences():
+    import pdb; pdb.set_trace()
     if request.content_type == 'application/x-www-form-urlencoded':
         req = build_json(request.form.to_dict())
     else:

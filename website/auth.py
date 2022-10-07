@@ -13,6 +13,7 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    import pdb; pdb.set_trace()
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
