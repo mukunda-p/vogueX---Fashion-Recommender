@@ -42,7 +42,6 @@ def create_app():
 
 @pytest.fixture
 def app():
-    import pdb; pdb.set_trace()
     db_fd, db_path = tempfile.mkstemp()
     from website import create_app
     app = create_app(test_conifg={'SECRET_KEY': 'test', 

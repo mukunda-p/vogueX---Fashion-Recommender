@@ -18,7 +18,6 @@ def create_app(test_conifg=None):
         app.config['SECRET_KEY'] = test_conifg['SECRET_KEY']
         app.config['SQLALCHEMY_DATABASE_URI'] = test_conifg['SQLALCHEMY_DATABASE_URI']
 
-    import pdb; pdb.set_trace()
     db.init_app(app)
     from .views import views
     from .auth import auth
