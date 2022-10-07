@@ -53,7 +53,7 @@ def test_signup_post(app):
         'Content-Type': mimetype,
         'Accept': mimetype
     }
-
+    import pdb; pdb.set_trace()
     # This user is not present in the db
     data = {
         'email': 'test@gmail.com',
