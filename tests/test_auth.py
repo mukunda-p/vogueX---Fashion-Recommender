@@ -53,7 +53,7 @@ def test_signup_post(app):
         'Content-Type': mimetype,
         'Accept': mimetype
     }
-
+    import pdb; pdb.set_trace()
     # This user is not present in the db
     data = {
         'email': 'test@gmail.com',
@@ -65,6 +65,23 @@ def test_signup_post(app):
         'password2': 'password123',
         'age': 25,
         'city': 'Raleigh'
+    }
+
+    response = client.post(url, data=data, headers=headers)
+    assert response.status_code, 200
+
+def test_login_check_positive_case(app):
+    client = app.test_client()
+    url = "/login"
+    mimetype = 'application/x-www-form-urlencoded'
+    headers = {
+        'Content-Type': mimetype,
+        'Accept': mimetype
+    }
+
+    data = {
+        'email': 'test@gmail.com',
+        'password': 'password123',
     }
 
     response = client.post(url, data=data, headers=headers)

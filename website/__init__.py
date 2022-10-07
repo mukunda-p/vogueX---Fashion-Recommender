@@ -7,15 +7,19 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 db_overlay = None
 
-def create_app():
+def create_app(test_conifg=None):
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
     #app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://fashion:fashion@localhost/fashion'
 
-    db.init_app(app)
+    if test_conifg:
+        app.config['SECRET_KEY'] = test_conifg['SECRET_KEY']
+        app.config['SQLALCHEMY_DATABASE_URI'] = test_conifg['SQLALCHEMY_DATABASE_URI']
 
+    import pdb; pdb.set_trace()
+    db.init_app(app)
     from .views import views
     from .auth import auth
 
