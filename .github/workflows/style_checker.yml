@@ -1,12 +1,17 @@
+name: flake8 Lint
+
 on: push
-name: Python Style Checker
+
 jobs:
-  lint:
+  flake8-lint:
     runs-on: ubuntu-latest
+    name: Lint
     steps:
-      - uses: actions/checkout@v2
-      - name: Flake8 check action
-        uses: tonybajan/flake8-check-action@v1.2.0
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Set up Python environment
+        uses: actions/setup-python@v2
         with:
-          repotoken: ${{ secrets.GITHUB_TOKEN }}
-          ignore: E501,E402,E722,E401,E811
+          python-version: "3.10"
+      - name: flake8 Lint
+        uses: py-actions/flake8@v2
