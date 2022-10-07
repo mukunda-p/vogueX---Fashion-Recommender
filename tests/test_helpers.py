@@ -7,10 +7,10 @@ import website
 from website.utils import QueryBuilder, WeatherAPI
 
 def test_search_image_query_builder(app):
-    query_key_words = ['i', 'want', 'a', 'nice', 'pizza']
+    query_key_words = ['date night', 'first anniversary']
     siObject = QueryBuilder()
     query = siObject.getQueryString(query_key_words)
-    assert query == 'i want a nice pizza '
+    assert query == 'suggested dress for date night first anniversary '
 
 def test_weather_api(app):
     city = 'Mumbai'

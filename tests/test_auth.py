@@ -34,7 +34,7 @@ def test_login_post(app):
     url = "/login"
 
     response = client.post(url, data=data, headers=headers)
-    assert response.status_code == 200
+    assert response.status_code == 302
 
 def test_signup_get(app):
     client = app.test_client()
