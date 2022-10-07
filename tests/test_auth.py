@@ -69,3 +69,20 @@ def test_signup_post(app):
 
     response = client.post(url, data=data, headers=headers)
     assert response.status_code, 200
+
+def test_login_check_positive_case(app):
+    client = app.test_client()
+    url = "/login"
+    mimetype = 'application/x-www-form-urlencoded'
+    headers = {
+        'Content-Type': mimetype,
+        'Accept': mimetype
+    }
+
+    data = {
+        'email': 'test@gmail.com',
+        'password': 'password123',
+    }
+
+    response = client.post(url, data=data, headers=headers)
+    assert response.status_code, 200
