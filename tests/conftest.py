@@ -19,9 +19,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{DB_NAME}'.format(DB_NAME=os.path.join(os.path.abspath(os.path.dirname(__file__)), 'database.db'))
-    import pdb; pdb.set_trace()
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://fashion:fashion@localhost/fashion_test'
-
     db.init_app(app)
 
     import website.views
@@ -42,7 +40,6 @@ def create_app():
 
 @pytest.fixture
 def app():
-    import pdb; pdb.set_trace()
     db_fd, db_path = tempfile.mkstemp()
     from website import create_app
     app = create_app(test_conifg={'SECRET_KEY': 'test', 

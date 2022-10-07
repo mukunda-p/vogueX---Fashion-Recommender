@@ -9,7 +9,6 @@ import sys
 sys.path.append("..")
    
 def test_login_get(app):
-    app = app()
     client = app.test_client()
     url = "/login"
 
@@ -20,8 +19,6 @@ def test_login_get(app):
 
 #  TODO: The below test case does successfuly post a request but it errors out when fetching from DB. resolve this
 def test_login_post(app):
-    app = app()
-
     client = app.test_client()
     mimetype = 'application/x-www-form-urlencoded'
     headers = {
@@ -37,7 +34,7 @@ def test_login_post(app):
     url = "/login"
 
     response = client.post(url, data=data, headers=headers)
-    assert response.status_code == 200
+    assert response.status_code == 302
 
 def test_signup_get(app):
     client = app.test_client()
@@ -53,7 +50,6 @@ def test_signup_post(app):
         'Content-Type': mimetype,
         'Accept': mimetype
     }
-    import pdb; pdb.set_trace()
     # This user is not present in the db
     data = {
         'email': 'test@gmail.com',

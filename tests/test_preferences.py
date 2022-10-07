@@ -22,9 +22,9 @@ def login_user(client):
 
 
 def test_get_default_preferences(app):
+    client = app.test_client()
     if not login_user(client):
         assert False
-    client = app.test_client()
     result = client.get("/default-preferences")
     assert result.json
 
