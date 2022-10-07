@@ -11,6 +11,13 @@
 
 [![DOI](https://zenodo.org/badge/426291746.svg)](https://zenodo.org/badge/latestdoi/426291746)
 
+
+[![GitHub issues](https://img.shields.io/github/issues/arvindsrinivas1/vogueX---Fashion-Recommender)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/issues?q=is%3Aopen)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/arvindsrinivas1/vogueX---Fashion-Recommender)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/issues?q=is%3Aissue+is%3Aclosed)
+[![Github pull requests](https://img.shields.io/github/issues-pr/arvindsrinivas1/vogueX---Fashion-Recommender)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/pulls)
+[![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/arvindsrinivas1/vogueX---Fashion-Recommender)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/pulls?q=is%3Apr+is%3Aclosed)
+
+
 Contributors:
 - Vinita Ramnani (vjramnan)
 - Sravanth Reddy Bommana (sbomman)
