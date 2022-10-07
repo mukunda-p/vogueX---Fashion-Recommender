@@ -13,7 +13,6 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-    import pdb; pdb.set_trace()
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -56,7 +55,6 @@ def sign_up():
         city = request.form.get('city')
         age = request.form.get('age')
 
-        import pdb; pdb.set_trace()
         user = User.query.filter_by(email=email).first()
         if user:
             flash('Email already exists.', category='error')
