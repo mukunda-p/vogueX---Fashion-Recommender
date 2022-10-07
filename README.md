@@ -7,7 +7,7 @@
 
 [![Github Repo size in bytes](https://img.shields.io/github/languages/code-size/arvindsrinivas1/vogueX---Fashion-Recommender)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender)
 
-[![codecov](https://codecov.io/gh/arvindsrinivas1/SE-HW/branch/main/graph/badge.svg?token=J984S6M1HO)](https://codecov.io/gh/arvindsrinivas1/SE-HW)
+[![codecov](https://codecov.io/gh/arvindsrinivas1/vogueX---Fashion-Recommender/branch/dev/graph/badge.svg?token=O08MSPU0WT)](https://codecov.io/gh/arvindsrinivas1/vogueX---Fashion-Recommender)
 
 [![DOI](https://zenodo.org/badge/426291746.svg)](https://zenodo.org/badge/latestdoi/426291746)
 
