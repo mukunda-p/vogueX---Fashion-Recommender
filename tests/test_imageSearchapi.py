@@ -37,9 +37,6 @@ def test_recommendations_with_session(app):
         # 'Accept': mimetype
     }
 
-    user = User()
-    user.id = 1
-
     url = "/recommendations"
     with client as c:
         with c.session_transaction() as sess:
