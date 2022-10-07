@@ -17,6 +17,10 @@
 [![Github pull requests](https://img.shields.io/github/issues-pr/arvindsrinivas1/vogueX---Fashion-Recommender)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/pulls)
 [![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/arvindsrinivas1/vogueX---Fashion-Recommender)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/pulls?q=is%3Apr+is%3Aclosed)
 
+[![github workflow](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/style_checker.yml/badge.svg)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/style_checker.yml)
+[![github workflow](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/main.yml/badge.svg)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/main.yml)
+[![github workflow](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/code_cov.yml/badge.svg)](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender/actions/workflows/code_cov.yml)
+
 
 Contributors:
 - Vinita Ramnani (vjramnan)
