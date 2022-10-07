@@ -55,7 +55,6 @@ def sign_up():
         city = request.form.get('city')
         age = request.form.get('age')
 
-        import pdb; pdb.set_trace()
         user = User.query.filter_by(email=email).first()
         if user:
             flash('Email already exists.', category='error')
