@@ -45,7 +45,7 @@ Integrating the calendar app to take care of the important days and send a recom
 We have “A style for every story” so let it be known to the world :)
 
 ## Demo
-Demo video:
+
 https://user-images.githubusercontent.com/10449988/194678767-7240a0ff-5df3-4de9-9151-3b1187ec9bce.mp4
 
 
