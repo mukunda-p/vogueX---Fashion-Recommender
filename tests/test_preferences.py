@@ -11,7 +11,7 @@ def login_user(client):
     url = "/login"
 
     response = client.post(url, data=data, headers=headers)
-    if response.status_code == 302:
+    if response.status_code == 200:
         return True
     return False
 

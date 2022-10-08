@@ -23,7 +23,7 @@ def login():
                 flash("Logged in successfully!", category="success")
                 session[contracts.SessionParameters.USERID] = user.get_id()
                 login_user(user, remember=True)
-                return redirect(url_for("views.home"))
+                return render_template("home.html", user=user)
             else:
                 flash("Incorrect password, try again.", category="error")
         else:
@@ -84,7 +84,7 @@ def sign_up():
             db.session.commit()
             login_user(new_user, remember=True)
             flash("Account created!", category="success")
-            return redirect(url_for("views.home"))
+            return render_template("home.html", user=new_user)
 
     # For get request.
     return render_template("sign_up.html", user=current_user)
@@ -109,7 +109,7 @@ def profile_update():
             user.phone_number = phone_number
             db.session.commit()
             flash("Account updated!", category="success")
-            return redirect(url_for("views.home"))
+            return render_template("home.html", user=user)
 
     # For get request.
     return render_template("profile.html", user=current_user)
