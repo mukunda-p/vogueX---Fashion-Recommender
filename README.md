@@ -1,10 +1,5 @@
 
-
-# NCSU CSC-510 Software Engineering Project 1 GROUP-16
-
-
 ## vogueX Fashion Recommender: Outfit Recommendation System
-This repository is part of CSC 510 Software Engineering Project 1. 
 
 [![Build Status](https://circleci.com/gh/arvindsrinivas1/vogueX---Fashion-Recommender/tree/dev.svg?style=svg)](https://circleci.com/gh/arvindsrinivas1/vogueX---Fashion-Recommender/tree/dev)
 
