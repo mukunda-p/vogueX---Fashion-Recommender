@@ -6,7 +6,6 @@ from google_images_search import GoogleImagesSearch
 class Config:
     def __init__(self) -> None:
         self.API_KEY = "AIzaSyBnKm9SLLT0j_Hmw5CXV5h54GNOm_NhvLI"
-        #self.PROJ_CX = "525f979309bbd4a07"
         self.PROJ_CX = "951651316f70a470c"
 
 

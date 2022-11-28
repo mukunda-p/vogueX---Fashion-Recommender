@@ -24,12 +24,14 @@ def create_app(test_conifg=None):
     db.init_app(app)
     from .views import views
     from .auth import auth
+    from .favourites import favouritesbp
 
     from . import preferences
     from . import recommendations
 
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
+    app.register_blueprint(favouritesbp, url_prefix="/")
     app.register_blueprint(preferences.preferencesbp)
     app.register_blueprint(recommendations.recommendationsbp)
 
