@@ -5,8 +5,8 @@ from google_images_search import GoogleImagesSearch
 
 class Config:
     def __init__(self) -> None:
-        self.API_KEY = "AIzaSyDAm6ijCQKVo9w75JroZnU5nFMjI3SVP2Y"
-        self.PROJ_CX = "525f979309bbd4a07"
+        self.API_KEY = "AIzaSyBnKm9SLLT0j_Hmw5CXV5h54GNOm_NhvLI"
+        self.PROJ_CX = "951651316f70a470c"
 
 
 class QueryBuilder:

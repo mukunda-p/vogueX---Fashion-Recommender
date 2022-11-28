@@ -6,7 +6,7 @@ import requests
 
 class Config:
     def __init__(self):
-        self.API_KEY = "9a00260af2814c1b8c1182732220310"
+        self.API_KEY = "424ca7dcc9a5422e811220113222311"
 
 
 class WeatherAPI:

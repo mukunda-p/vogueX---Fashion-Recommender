@@ -1,7 +1,6 @@
 from website import preferences
 from . import db
 from flask_login import UserMixin
-from .CustomMixin import CustomSerializerMixin
 from sqlalchemy.sql import func
 
 
@@ -22,7 +21,7 @@ class Preference(db.Model, UserMixin):
     preferences = db.Column(db.Text)
 
 
-class Favourite(db.Model, CustomSerializerMixin):
+class Favourite(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer)
     favourite_url = db.Column(db.String(255))
