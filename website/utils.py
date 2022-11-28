@@ -5,7 +5,7 @@ import requests
 
 class WeatherConfig:
     def __init__(self):
-        self.API_KEY = "9a00260af2814c1b8c1182732220310"
+        self.API_KEY = "424ca7dcc9a5422e811220113222311"
 
 
 class WeatherAPI:
@@ -35,8 +35,8 @@ class WeatherAPI:
 
 class ImageConfig:
     def __init__(self) -> None:
-        self.API_KEY = "AIzaSyDAm6ijCQKVo9w75JroZnU5nFMjI3SVP2Y"
-        self.PROJ_CX = "525f979309bbd4a07"
+        self.API_KEY = "AIzaSyBnKm9SLLT0j_Hmw5CXV5h54GNOm_NhvLI"
+        self.PROJ_CX = "951651316f70a470c"
 
 
 class QueryBuilder:

@@ -19,3 +19,9 @@ class RecommendationContractResponse:
 
 class PreferenceContractRequest:
     PREFERENCES = "preferences"
+
+
+class FavouritesContrastRequest:
+    FAVOURITE_URL_KEY = "favouriteUrl"
+    SEARCH_OCCASION_KEY = "searchOccasion"
+    SEARCH_WEATHER_KEY = "searchWeather"

@@ -32,6 +32,13 @@ create table recommendation (
     primary key (userid),
     foreign key (userid) references user(id));
 
+create table favourite (
+    id int not null primary key AUTO_INCREMENT,
+    userid int not null,
+    favourite_url varchar(255) not null,
+    search_occasion varchar(255) not null,
+    search_weather varchar(255) not null,
+    foreign key (userid) references user(id));
 
 
 drop database fashion_test;
