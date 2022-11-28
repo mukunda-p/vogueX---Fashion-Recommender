@@ -1,5 +1,37 @@
+var formattedFormData2={};
+var occasionValLS;
+var cityValLS;
 $(document).ready(function(){
 	$('#Myimg').click(function(){
   		$('#Mymodal').modal('show')
 	});
+	//const favourites = new Set()
+	$('button').click(function(e){
+		let buttonId=this.id;
+		let idx=buttonId.slice(9);
+		let imgsrc=document.getElementById("Myimg"+idx).src;
+		//favourites.add(imgsrc);
+
+		formattedFormData2["favouriteUrl"]=imgsrc
+		occasionValLS=localStorage.getItem("occasionVal");
+		cityValLS=localStorage.getItem("cityVal");
+		formattedFormData2["occasion"]=occasionValLS
+		formattedFormData2["city"]=cityValLS
+		
+
+		formData = JSON.stringify(formattedFormData2)
+		e.preventDefault();
+		$.ajax({
+			type:"POST",
+            url:"/favourites",
+            data:formData,
+            success:function(){
+                console.log("success");
+            },
+			dataType: "json",
+            contentType : "application/json"
+		})
+	});
+	
+	
 });
