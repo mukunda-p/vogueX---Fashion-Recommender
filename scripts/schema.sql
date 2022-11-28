@@ -41,6 +41,7 @@ create table favourite (
     foreign key (userid) references user(id));
 
 
+
 drop database fashion_test;
 create database fashion_test;
 use fashion_test;
@@ -72,3 +73,7 @@ create table recommendation (
     links json not null,
     primary key (userid),
     foreign key (userid) references user(id));
+    
+    
+select * from favourite;
+truncate table favourite;

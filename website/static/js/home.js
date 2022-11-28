@@ -1,12 +1,19 @@
+var formattedFormData = {};
 $(document).ready(function(){
     $(".recoButton1").click(function(e){
         var formData = $('#recoForm').serializeArray();
-        var formattedFormData = {};
+        
         for(var i = 0; i < formData.length; i++){
             formattedFormData[formData[i]["name"]] = formData[i]["value"];
         }
         console.log(formattedFormData);
         formData = JSON.stringify(formattedFormData)
+        var occasionValue=formattedFormData["occasion"];
+        var cityValue=formattedFormData["city"]
+        localStorage.setItem("occasionVal",occasionValue);
+        localStorage.setItem("cityVal",cityValue);
+        // console.log(occasionVal)
+        // console.log(cityVal)
         console.log(formData);
         e.preventDefault();
         $.ajax({
@@ -26,9 +33,21 @@ $(document).ready(function(){
             dataType: "json",
             contentType : "application/json"
         });
+        formData = JSON.stringify(formattedFormData)
+        // $.ajax({
+        //     type:"POST",
+        //     url:"/favourites",
+        //     data:formData,
+        //     success:function(){
+        //         console.log("success");
+        //     },
+        //     dataType: "json",
+        //     contentType : "application/json"
+        // })
     });
     $(".recoButton1").click(function(e){
         var loader= document.getElementById( 'center' )
         loader.style.display = '';
     });
 });
+

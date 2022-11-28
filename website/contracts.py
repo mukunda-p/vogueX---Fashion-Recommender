@@ -23,5 +23,5 @@ class PreferenceContractRequest:
 
 class FavouritesContrastRequest:
     FAVOURITE_URL_KEY = "favouriteUrl"
-    SEARCH_OCCASION_KEY = "searchOccasion"
-    SEARCH_WEATHER_KEY = "searchWeather"
+    SEARCH_OCCASION_KEY = "occasion"
+    SEARCH_WEATHER_KEY = "city"
