@@ -5,17 +5,21 @@ $(document).ready(function(){
         for(var i = 0; i < formData.length; i++){
             formattedFormData[formData[i]["name"]] = formData[i]["value"];
         }
+        console.log(formattedFormData);
         formData = JSON.stringify(formattedFormData)
+        console.log(formData);
         e.preventDefault();
         $.ajax({
             type: "POST",
             url: "/recommendations",
             data: formData,
             success: function(data){
+                
                 var str = "";
                 for(var i = 0; i < data["links"].length; i++){
                     str += data["links"][i] + " || ";
                 }
+                console.log(data["links"]);
                 var redirectUrl = window.location.protocol + "//" + window.location.host + "/results?" + str;
                 location.href = redirectUrl;
             },
