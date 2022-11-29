@@ -65,15 +65,29 @@ def post_favourites():
         return "Adding favourite success"
 
     else:
-        favourite_list = Favourite.query.filter_by(userid=int(userid))
+        favourite_query = Favourite.query.filter_by(userid=int(userid))
         # print(favourite_list)
         if favourite_url != "":
-            favourite_list = favourite_list.filter_by(favourite_url=favourite_url)
+            favourite_query = favourite_query.filter_by(favourite_url=favourite_url)
         if search_occasion != "":
-            favourite_list = favourite_list.filter_by(search_occasion=search_occasion)
+            favourite_query = favourite_query.filter_by(search_occasion=search_occasion)
         if search_weather != "":
-            favourite_list = favourite_list.filter_by(search_weather=search_weather)
+            favourite_query = favourite_query.filter_by(search_weather=search_weather)
 
-        favourite_list = favourite_list.all()
+        favourite_resp = favourite_query.all()
+        # print(favourite_list[0])
 
-        return json.dumps(favourite_list)
+        sorted_fav_list = {}
+
+        for row in favourite_resp:
+            fav = json.loads(json.dumps(Favourite.serialize(row)))
+
+            if fav["search_occasion"] in sorted_fav_list.keys():
+                curr_list = list(sorted_fav_list[fav["search_occasion"]])
+                curr_list.append(fav)
+                sorted_fav_list[fav["search_occasion"]] = curr_list
+            else:
+                sorted_fav_list[fav["search_occasion"]] = [fav]  
+                    
+
+        return sorted_fav_list
