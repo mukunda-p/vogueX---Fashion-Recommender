@@ -19,7 +19,7 @@ import json
 favouritesbp = Blueprint("favourites", __name__)
 
 
-@favouritesbp.route("/favourites", methods=["POST", "GET"])
+@favouritesbp.route("/favourites", methods=["POST", "GET", "PUT"])
 # @login_required
 def post_favourites():
     req_json_body = request.json
@@ -52,6 +52,7 @@ def post_favourites():
 
     # For the post request.
     if request.method == "POST":
+
         new_favourite = Favourite(
             userid=userid,
             favourite_url=favourite_url,
@@ -64,7 +65,7 @@ def post_favourites():
 
         return "Adding favourite success"
 
-    else:
+    elif request.method == "GET":
         favourite_query = Favourite.query.filter_by(userid=int(userid))
         # print(favourite_list)
         if favourite_url != "":
@@ -91,3 +92,20 @@ def post_favourites():
                     
 
         return sorted_fav_list
+
+    else:
+        favourite_query = Favourite.query.filter_by(userid=int(userid))
+        # print(favourite_list)
+        if favourite_url != "":
+            favourite_query = favourite_query.filter_by(favourite_url=favourite_url)
+        if search_occasion != "":
+            favourite_query = favourite_query.filter_by(search_occasion=search_occasion)
+        if search_weather != "":
+            favourite_query = favourite_query.filter_by(search_weather=search_weather)
+
+        favourite_resp = favourite_query.all()
+        for row in favourite_resp:
+            db.session.delete(row)
+        db.session.commit()
+
+        return "Delete Success"
