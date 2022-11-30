@@ -19,7 +19,7 @@ import json
 favouritesbp = Blueprint("favourites", __name__)
 
 
-@favouritesbp.route("/favourites", methods=["POST", "GET", "PUT"])
+@favouritesbp.route("/favourites", methods=["POST"])
 # @login_required
 def post_favourites():
     req_json_body = request.json
@@ -51,7 +51,7 @@ def post_favourites():
         search_weather = req_json_body[contracts.FavouritesContrastRequest.SEARCH_WEATHER_KEY]
 
     # For the post request.
-    if request.method == "POST":
+    if req_json_body["actionToBePerformed"] == "ADD_NEW_FAVOURITES":
 
         new_favourite = Favourite(
             userid=userid,
@@ -65,7 +65,7 @@ def post_favourites():
 
         return "Adding favourite success"
 
-    elif request.method == "GET":
+    elif req_json_body["actionToBePerformed"] == "FETCH_FAVOURITES":
         favourite_query = Favourite.query.filter_by(userid=int(userid))
         # print(favourite_list)
         if favourite_url != "":
