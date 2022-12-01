@@ -11,6 +11,7 @@ class RecommendationContractRequest:
     #### RECOMMENDATION PAYLOAD FIELDS
     OCCASION_KEY = "occasion"
     CITY_KEY = "city"
+    GENDER_KEY = "gender"
 
 
 class RecommendationContractResponse:
