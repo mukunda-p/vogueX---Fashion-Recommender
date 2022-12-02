@@ -13,6 +13,7 @@ class RecommendationContractRequest:
     CITY_KEY = "city"
     DATE_KEY = "date"
     TIME_KEY = "time"
+    GENDER_KEY = "gender"
 
 
 class RecommendationContractResponse:
