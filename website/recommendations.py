@@ -33,6 +33,7 @@ def get_recommendations():
     req_json_body = request.json
     city = ""
     occasion = ""
+    gender=" "
     # userid = '3'
 
     if contracts.SessionParameters.USERID not in session:
@@ -54,13 +55,19 @@ def get_recommendations():
         # take from the user table
         city = user.city
 
+    if contracts.RecommendationContractRequest.GENDER_KEY in req_json_body:
+        gender = req_json_body[contracts.RecommendationContractRequest.GENDER_KEY].lower()
+    else:
+        # take from the user table
+        gender = user.gender
+
     if contracts.RecommendationContractRequest.OCCASION_KEY in req_json_body:
         occasion = req_json_body[contracts.RecommendationContractRequest.OCCASION_KEY]
 
     from . import helper
 
     help = helper.RecommendationHelper()
-    links = help.giveRecommendations(userid, user.gender, occasion, city)
+    links = help.giveRecommendations(userid, gender, occasion, city)
 
     recommendations = dict()
     recommendations[contracts.RecommendationContractResponse.LINKS] = []
