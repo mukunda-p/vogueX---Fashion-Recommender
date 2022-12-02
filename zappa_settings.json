@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "app_function": "tests.conftest.app",
+        "aws_region": "us-east-2",
+        "profile_name": "default",
+        "project_name": "voguex-fashion-",
+        "runtime": "python3.9",
+        "s3_bucket": "zappa-caxyvt74m"
+    }
+}
