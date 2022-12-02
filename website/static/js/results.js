@@ -17,20 +17,31 @@ $(document).ready(function(){
 		cityValLS=localStorage.getItem("cityVal");
 		formattedFormData2["occasion"]=occasionValLS
 		formattedFormData2["city"]=cityValLS
-		
-
+		formattedFormData2["actionToBePerformed"] = "ADD_NEW_FAVOURITES"
 		formData = JSON.stringify(formattedFormData2)
+		console.log(formData)
 		e.preventDefault();
 		$.ajax({
 			type:"POST",
             url:"/favourites",
             data:formData,
             success:function(){
-                console.log("success");
+				return "success"
+                
             },
 			dataType: "json",
             contentType : "application/json"
 		})
+		// $.ajax({
+		// 	type:"GET",
+        //     url:"/favourites",
+        //     success:function(){
+        //         console.log("success");
+        //     },
+		// 	dataType: "json",
+        //     contentType : "application/json"
+		// })
+
 	});
 	
 	
