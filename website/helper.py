@@ -1,10 +1,11 @@
 # from geopy.geocoders import Nominatim
 
-from . import utils
+#from . import utils
 from . import models
 from website import preferences
 import json
 from . import contracts
+from datetime import datetime
 
 default_preferences = {
     "male": ["blue shirt", "black pant"],
@@ -24,7 +25,7 @@ class PreferencesHelper:
 
 
 class WeatherHelper:
-    def __init__(self) -> None:
+    def _init_(self) -> None:
         # self.geolocator = Nominatim(user_agent="Your_Name")
         self.weatherAPI = utils.WeatherAPI()
 
@@ -34,21 +35,27 @@ class WeatherHelper:
     #     location = self.geolocator.geocode(city)
     #     return (location.longitude, location.latitude)
 
-    def getWeather(self, city=None):
+    def getWeather(self, city=None, date=None ):
         # coordinates = self.giveLocation(city)
-        weather = self.weatherAPI.getCurrentWeather(city=city)
+        # will add proper date format after discussing the date input
+        #if date.equals(datetime.today):
+        # TODO: Change Datetime to generic  
+        if date == 2022-11-30:
+            weather = self.weatherAPI.getcurrentWeather(city=city)
+        else: 
+            weather = self.weatherAPI.getfutureWeather(city=city, date =date, time = time)
         return weather
 
 
 class RecommendationHelper:
-    def __init__(self) -> None:
+    def _init_(self) -> None:
         self.searchAPIObj = utils.SearchImages()
         self.weatherHelper = WeatherHelper()
 
-    def giveRecommendations(self, userid, gender, occasion=None, city=None):
+    def giveRecommendations(self, userid, gender, occasion=None, city=None, date=None, time=None):
         preferences = PreferencesHelper.givePreferences(userid, occasion)
         query_keywords = []
-        weather = self.weatherHelper.getWeather(city)
+        weather = self.weatherHelper.getWeather(city, date, time)
         if not preferences:
             query_keywords.append(gender)
         else:
