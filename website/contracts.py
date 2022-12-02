@@ -11,6 +11,8 @@ class RecommendationContractRequest:
     #### RECOMMENDATION PAYLOAD FIELDS
     OCCASION_KEY = "occasion"
     CITY_KEY = "city"
+    DATE_KEY = "date"
+    TIME_KEY = "time"
 
 
 class RecommendationContractResponse:

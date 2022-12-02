@@ -54,13 +54,28 @@ def get_recommendations():
         # take from the user table
         city = user.city
 
+    if contracts.RecommendationContractRequest.DATE_KEY in req_json_body:
+        dateInput = req_json_body[contracts.RecommendationContractRequest.DATE_KEY]
+    else:
+        # take from the user table
+        # TODO: Change Date to Today form Datetime
+        dateInput = "12-02-2022"
+
+    if contracts.RecommendationContractRequest.TIME_KEY in req_json_body:
+        timeInput = req_json_body[contracts.RecommendationContractRequest.TIME_KEY]
+    else:
+        # take from the user table
+        # TODO: Change Date to Today form Datetime
+        timeInput = "05:00:00"
+
+
     if contracts.RecommendationContractRequest.OCCASION_KEY in req_json_body:
         occasion = req_json_body[contracts.RecommendationContractRequest.OCCASION_KEY]
 
     from . import helper
 
     help = helper.RecommendationHelper()
-    links = help.giveRecommendations(userid, user.gender, occasion, city)
+    links = help.giveRecommendations(userid, user.gender, occasion, city, date=dateInput, time=timeInput)
 
     recommendations = dict()
     recommendations[contracts.RecommendationContractResponse.LINKS] = []
