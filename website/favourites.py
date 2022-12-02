@@ -19,9 +19,13 @@ import json
 favouritesbp = Blueprint("favourites", __name__)
 
 
-@favouritesbp.route("/favourites", methods=["POST"])
+@favouritesbp.route("/favourites", methods=["POST","GET"])
 # @login_required
-def post_favourites():
+def favourites():
+    if request.method == "GET":
+        return "<p> HEllo !!!!! </p>"
+
+
     req_json_body = request.json
 
     favourite_url = ""
@@ -90,8 +94,8 @@ def post_favourites():
             else:
                 sorted_fav_list[fav["search_occasion"]] = [fav]  
                     
-
-        return sorted_fav_list
+        print("hitting api")
+        return render_template("favourites.html",user=current_user, sorted_fav_list=sorted_fav_list,enumerate=enumerate)
 
     else:
         favourite_query = Favourite.query.filter_by(userid=int(userid))
@@ -109,3 +113,4 @@ def post_favourites():
         db.session.commit()
 
         return "Delete Success"
+
