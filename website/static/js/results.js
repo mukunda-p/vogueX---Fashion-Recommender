@@ -50,6 +50,7 @@ $(document).ready(function(){
 		//console.log(imgsrc)
 		formattedFormData2["image_url"]=imgsrc
 		formData = JSON.stringify(formattedFormData2)
+		console.log(formData)
 		e.preventDefault();
 		$.ajax({
 			type:"POST",
