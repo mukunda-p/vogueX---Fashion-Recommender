@@ -75,7 +75,7 @@ def favourites():
         search_weather = req_json_body[contracts.FavouritesContrastRequest.SEARCH_WEATHER_KEY]
 
     # For the post request.
-    if req_json_body["actionToBePerformed"] == "ADD_NEW_FAVOURITES":
+    if "actionToBePerformed" in req_json_body.keys() and req_json_body["actionToBePerformed"] == "ADD_NEW_FAVOURITES":
 
         new_favourite = Favourite(
             userid=userid,
@@ -89,7 +89,7 @@ def favourites():
 
         return "Adding favourite success"
 
-    elif req_json_body["actionToBePerformed"] == "FETCH_FAVOURITES":
+    elif "actionToBePerformed" in req_json_body.keys() and req_json_body["actionToBePerformed"] == "FETCH_FAVOURITES":
         favourite_query = Favourite.query.filter_by(userid=int(userid))
         # print(favourite_list)
         if favourite_url != "":
@@ -122,15 +122,16 @@ def favourites():
         # print(favourite_list)
         if favourite_url != "":
             favourite_query = favourite_query.filter_by(favourite_url=favourite_url)
-        if search_occasion != "":
-            favourite_query = favourite_query.filter_by(search_occasion=search_occasion)
-        if search_weather != "":
-            favourite_query = favourite_query.filter_by(search_weather=search_weather)
+        # if search_occasion != "":
+        #     favourite_query = favourite_query.filter_by(search_occasion=search_occasion)
+        # if search_weather != "":
+        #     favourite_query = favourite_query.filter_by(search_weather=search_weather)
 
         favourite_resp = favourite_query.all()
         for row in favourite_resp:
             db.session.delete(row)
         db.session.commit()
-
-        return "Delete Success"
+        response = dict()
+        response["Message"] = "Delete Success"
+        return jsonify(response),200
 
