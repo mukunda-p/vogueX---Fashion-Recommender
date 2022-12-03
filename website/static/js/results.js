@@ -12,9 +12,6 @@ $(document).ready(function(){
 
 		}
 		
-
-		
-
 		let buttonId=this.id;
 
 		if(buttonId.slice(0,9)=="favourite"){
@@ -48,7 +45,25 @@ $(document).ready(function(){
 		})
 	}else{
 
-		alert("shop")
+		let idx=buttonId.slice(4);
+		let imgsrc=document.getElementById("Myimg"+idx).src;
+		//console.log(imgsrc)
+		formattedFormData2["image_url"]=imgsrc
+		formData = JSON.stringify(formattedFormData2)
+		e.preventDefault();
+		$.ajax({
+			type:"POST",
+            url:"/shopping",
+            data:formData,
+            success:function(){
+				return "success"
+                
+            },
+			dataType: "json",
+            contentType : "application/json"
+		})
+
+		
 
 
 	}
