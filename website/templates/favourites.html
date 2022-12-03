@@ -27,22 +27,24 @@
         </div>
     </div>
 
+</div >
 </div>
-</div>
-<div class="media-scroller snaps-inline top-buffer card-deck">
-    <!-- {% for idx,occasion in enumerate(sorted_fav_list) %}
+<div class="container flow">
+
+
+<div class="media-scroller snaps-inline top-buffer">
+    {% for idx,occasion in enumerate(sorted_fav_list) %}
     {% for idx2, j in enumerate(sorted_fav_list[occasion]) %} 
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src={{sorted_fav_list[occasion][idx2]['favourite_url']}} alt="Card image cap">
-        <div class="card-body">
-            <p class="card-text">{{occasion}}</p>
-        </div>
+    <div class="media-element">
+        <img src={{sorted_fav_list[occasion][idx2]['favourite_url']}} >
+        <p class="text-center text-light">Occasion: {{occasion}}</p>
+        
     </div>
     {% endfor %}
     {% endfor %}
-     -->
+    
 
-     <p>Hello !!!! This is your Favourites</p>
+</div>  
     
 </div>
 {% endblock %}
