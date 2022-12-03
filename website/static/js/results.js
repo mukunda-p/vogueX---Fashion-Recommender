@@ -8,16 +8,20 @@ $(document).ready(function(){
 	//const favourites = new Set()
 	$('button').click(function(e){
 		function msgout(){
-			id=document.getElementById("fav_msg").innerHTML="";
+			sid=document.getElementById("fav_msg").innerHTML="";
 
 		}
 		
-		id=document.getElementById("fav_msg").innerHTML="Favourite Added Successfully!"
-		setTimeout(msgout, 2000);
-
 
 		
+
 		let buttonId=this.id;
+
+		if(buttonId.slice(0,9)=="favourite"){
+
+		sid=document.getElementById("fav_msg").innerHTML="Favourite Added Successfully!"
+		setTimeout(msgout, 1000);
+
 		let idx=buttonId.slice(9);
 		let imgsrc=document.getElementById("Myimg"+idx).src;
 		//favourites.add(imgsrc);
@@ -42,15 +46,12 @@ $(document).ready(function(){
 			dataType: "json",
             contentType : "application/json"
 		})
-		// $.ajax({
-		// 	type:"GET",
-        //     url:"/favourites",
-        //     success:function(){
-        //         console.log("success");
-        //     },
-		// 	dataType: "json",
-        //     contentType : "application/json"
-		// })
+	}else{
+
+		alert("shop")
+
+
+	}
 
 	});
 	
