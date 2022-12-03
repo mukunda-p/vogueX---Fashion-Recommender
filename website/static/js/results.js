@@ -7,6 +7,16 @@ $(document).ready(function(){
 	});
 	//const favourites = new Set()
 	$('button').click(function(e){
+		function msgout(){
+			id=document.getElementById("fav_msg").innerHTML="";
+
+		}
+		
+		id=document.getElementById("fav_msg").innerHTML="Favourite Added Successfully!"
+		setTimeout(msgout, 2000);
+
+
+		
 		let buttonId=this.id;
 		let idx=buttonId.slice(9);
 		let imgsrc=document.getElementById("Myimg"+idx).src;
