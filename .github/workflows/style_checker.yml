@@ -15,5 +15,6 @@ jobs:
           python-version: "3.10"
       - name: flake8 Lint
         run: |
+          pip install flake8
           flake8 --ignore=E1,E23,W503,E501,C901,E722 src
           flake8 --ignore=E1,E23,W503,E501,C901,E722 website
