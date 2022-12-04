@@ -26,13 +26,11 @@ different options to give preferences.
 Use Case #3
 Actor : A user
 Actor Goal : to get recommendations on preferences
-Problem : As a user I would like to create a fashion profile and then get recommendations on my
-preferences so that I am able to find newer and better clothes.
+Problem : As a user I would like to create a fashion profile and then get recommendations on my preferences so that I am able to find newer and better clothes.
 Steps:
 1. The user decides to login to vogueX
 2. If the user has not given preferences, can go and update preferences.
-3. The user after giving preferences, can give an occasion name and hit recommend to get fashion
-recommendations based on the preferences and the occasion.
+3. The user after giving preferences, can give an occasion name and hit recommend to get fashion recommendations based on the preferences and the occasion.
 
 Use Case #4:
 Actor : A user
@@ -40,8 +38,16 @@ Actor Goal : to check if the View and Favorites are visible on the recommendatio
 Problem : As a user, I am searching for a reccomendation and I don't want to miss my liked items for the next search.
 Steps:
 1. The user logs into voguex account.
-2. The user should be able to get recommendations on what to wear based on the occasion he/she
-wants
-3. The user would input the occasion name or can put a occasion query and would get
-recommendations in the form of photos in a carousel.
+2. The user should be able to get recommendations on what to wear based on the occasion he/she wants
+3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
 4.The user should be able to see the recommendations with view and favorite buttons on the reccomendations.
+
+Use Case #5:
+Actor : A user
+Actor Goal :  to check if the list of favorites should be visible to the user. 
+Problem : As a user, I am searching for a reccomendation and I liked a few items. I will mark all the liked items as favorites and I want to revisit my favorites later.
+Steps:
+1. The user logs into voguex account.
+2. The user should be able to get recommendations on what to wear based on the occasion he/she wants
+3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
+4.The user should be able to see all the items he/she marked as favorites.
