@@ -105,7 +105,7 @@ Steps:
 
 3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
 
-4. The user should be able to see the links from e-commerce sites for the items to buy.
+4. The user should be able to favorite the reccomendations and should be able to see the links from e-commerce sites for the items to buy.
 
 Use Case #7:
 
@@ -123,4 +123,22 @@ Steps:
 
 3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
 
-4. The user should be able to delete any of the selected items from the list of favorites.
+4. The user should be able to favorite the reccomendations and should be able to delete any of the selected items from the list of favorites.
+
+Use Case #8:
+
+Actor : A user
+
+Actor Goal : to check if the shopping links are available to the users once they click the shop button.
+
+Problem : As a user, I visit the favorites section. I would click on shop button on the items and I will need the appropriate links to shop.
+
+Steps:
+
+1. The user logs into voguex account.
+
+2. The user should be able to get recommendations on what to wear based on the occasion he/she wants
+
+3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
+
+4. The user should be able to favorite the reccomendations and should be able to see the appropriate shopping links after the user clicks on the shopping button.
