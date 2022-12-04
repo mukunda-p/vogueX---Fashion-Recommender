@@ -14,8 +14,7 @@ recommendations in the form of photos in a carousel.
 Use Case #2
 Actor : A user
 Actor Goal : to make a fashion profile
-Problem : As a user I would like to create a fashion profile, so that I can understand what clothes do
-people wear in different occasions and get some new ideas.
+Problem : As a user I would like to create a fashion profile, so that I can understand what clothes doc people wear in different occasions and get some new ideas.
 Steps:
 1. The user decides to make a fashion profile
 2. The user logs on voguex and clicks on signup
@@ -51,3 +50,23 @@ Steps:
 2. The user should be able to get recommendations on what to wear based on the occasion he/she wants
 3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
 4.The user should be able to see all the items he/she marked as favorites.
+
+Use Case #6:
+Actor : A user
+Actor Goal : to verify if the items in the favorites can be shopped.
+Problem : As a user, I visit the favorites section. I want to buy any of the items from the list of favorites. There has to be someway to buy those items.
+Steps:
+1. The user logs into voguex account.
+2. The user should be able to get recommendations on what to wear based on the occasion he/she wants
+3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
+4.The user should be able to see the links from e-commerce sites for the items to buy.
+
+Use Case #7:
+Actor : A user
+Actor Goal : to verify if the items in the favorites can be deleted.
+Problem : As a user, I visit the favorites section. I don't like some of them now and I want to delete them from the list.
+Steps:
+1. The user logs into voguex account.
+2. The user should be able to get recommendations on what to wear based on the occasion he/she wants
+3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
+4.The user should be able to delete any of the selected items from the list of favorites.
