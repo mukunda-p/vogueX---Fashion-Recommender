@@ -6,13 +6,14 @@ class ErrorCodes:
 class SessionParameters:
     USERID = "userid"
 
-
 class RecommendationContractRequest:
     #### RECOMMENDATION PAYLOAD FIELDS
     OCCASION_KEY = "occasion"
     CITY_KEY = "city"
     DATE_KEY = "date"
     TIME_KEY = "time"
+    AGE_GROUP_KEY = "ageGroup"
+    CULTURE_KEY = "culture"
     GENDER_KEY = "gender"
 
 

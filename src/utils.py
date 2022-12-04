@@ -43,12 +43,12 @@ class QueryBuilder:
     def __init__(self) -> None:
         pass
 
-    def getQueryString(self, queries, culture=""):
+    def getQueryString(self, queries):
         return_query_string = ""
         for q in queries:
             return_query_string += q + " "
 
-        return "Suggested " + culture + " outfits for " + return_query_string
+        return "suggested dress for " + return_query_string
 
 
 class SearchImages:
@@ -59,11 +59,11 @@ class SearchImages:
         self.query_builder = QueryBuilder()
 
     # gives the list of urls for a search
-    def image_search(self, query_keywords, culture, num_of_records=None):
+    def image_search(self, query_keywords, num_of_records=None):
         if not num_of_records:
             num_of_records = self.default_num_of_records
 
-        query = self.query_builder.getQueryString(query_keywords, culture=culture)
+        query = self.query_builder.getQueryString(query_keywords)
         print("Searchingy ", query)
         _search_params = {"q": query, "num": num_of_records}
         self.gis.search(search_params=_search_params)

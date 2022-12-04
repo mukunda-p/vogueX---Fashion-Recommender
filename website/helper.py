@@ -52,20 +52,28 @@ class RecommendationHelper:
         self.searchAPIObj = utils.SearchImages()
         self.weatherHelper = WeatherHelper()
 
-    def giveRecommendations(self, userid, gender, occasion=None, city=None, date=None, time=None):
+
+def giveRecommendations(self, userid, gender,city = None, occasion=None, culture=None, 
+                        ageGroup=None, date=None, time=None):
         preferences = PreferencesHelper.givePreferences(userid, occasion)
         query_keywords = []
         weather = self.weatherHelper.getWeather(city, date, time)
-        if not preferences:
-            query_keywords.append(gender)
-        else:
-            for pref in preferences:
-                query_keywords.append(pref["color"] + " " + pref["type"])
+        # if not preferences:
+        #     query_keywords.append(gender)
+        # else:
+        #     for pref in preferences:
+        #         query_keywords.append(pref["color"] + " " + pref["type"])
         # if not occasion:
 
         #     query_keywords.append(occasion)
+        if gender != "":
+            query_keywords.append(" gender " + gender)   
+
+        if not ageGroup:
+            query_keywords.append(" for " + ageGroup)
+
         if not occasion:
             occasion = "regular event"
-        query_keywords.append("in " + weather + " weather" + " to a " + occasion)
-        links = self.searchAPIObj.image_search(query_keywords)
+        query_keywords.append(" in " + weather + " weather" + " to a \"" + occasion + "\"")
+        links = self.searchAPIObj.image_search(query_keywords, culture)
         return links

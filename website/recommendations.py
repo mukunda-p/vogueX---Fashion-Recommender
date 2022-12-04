@@ -22,7 +22,7 @@ recommendationsbp = Blueprint("recommendationsbp", __name__, url_prefix="/")
 """
 payload = {
     "occasion" : <occasion_name>
-    "city" : <city>
+    "culture" : <culture>
 }
 """
 
@@ -31,29 +31,32 @@ payload = {
 def get_recommendations():
 
     req_json_body = request.json
-    city = ""
+    culture = ""
     occasion = ""
-    gender=" "
-    # userid = '3'
+    gender=""
+    ageGroup=""
+    city=""
+    userid = '3'
 
-    if contracts.SessionParameters.USERID not in session:
-        return (
-            jsonify(
-                {
-                    "error": "user not logged in",
-                    "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN,
-                }
-            ),
-            403,
-        )
+    # if contracts.SessionParameters.USERID not in session:
+    #     return (
+    #         jsonify(
+    #             {
+    #                 "error": "user not logged in",
+    #                 "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN,
+    #             }
+    #         ),
+    #         403,
+    #     )
 
-    userid = session[contracts.SessionParameters.USERID]
+    # userid = session[contracts.SessionParameters.USERID]
     user = models.User.query.filter_by(id=int(userid)).first()
-    if contracts.RecommendationContractRequest.CITY_KEY in req_json_body:
-        city = req_json_body[contracts.RecommendationContractRequest.CITY_KEY]
-    else:
-        # take from the user table
-        city = user.city
+    if contracts.RecommendationContractRequest.CULTURE_KEY in req_json_body:
+        culture = req_json_body[contracts.RecommendationContractRequest.CULTURE_KEY]
+    
+    # take from the user table
+    # city = user.city
+    city = "Raleigh"
 
     if contracts.RecommendationContractRequest.DATE_KEY in req_json_body:
         dateInput = req_json_body[contracts.RecommendationContractRequest.DATE_KEY]
@@ -78,10 +81,15 @@ def get_recommendations():
     if contracts.RecommendationContractRequest.OCCASION_KEY in req_json_body:
         occasion = req_json_body[contracts.RecommendationContractRequest.OCCASION_KEY]
 
+    # Age 
+    if contracts.RecommendationContractRequest.AGE_GROUP_KEY in req_json_body:
+        ageGroup = req_json_body[contracts.RecommendationContractRequest.AGE_GROUP_KEY]
+
     from . import helper
 
     help = helper.RecommendationHelper()
-    links = help.giveRecommendations(userid, gender, occasion, city, date=dateInput, time=timeInput)
+    links = help.giveRecommendations(userid=userid, gender=gender, occasion=occasion, city=city, 
+                                    culture=culture, ageGroup=ageGroup, date=dateInput, time=timeInput)
 
     recommendations = dict()
     recommendations[contracts.RecommendationContractResponse.LINKS] = []
