@@ -1,20 +1,11 @@
-import functools
 from flask import (
     Blueprint,
-    flash,
-    g,
     jsonify,
-    redirect,
-    render_template,
-    request,
-    session,
-    url_for,
     request,
 )
 
 from . import contracts
 
-from werkzeug.security import check_password_hash, generate_password_hash
 from . import models
 
 recommendationsbp = Blueprint("recommendationsbp", __name__, url_prefix="/")
@@ -33,9 +24,9 @@ def get_recommendations():
     req_json_body = request.json
     culture = ""
     occasion = ""
-    gender=""
-    ageGroup=""
-    city=""
+    gender = ""
+    ageGroup = ""
+    city = ""
     userid = '3'
 
     # if contracts.SessionParameters.USERID not in session:
@@ -53,13 +44,14 @@ def get_recommendations():
     user = models.User.query.filter_by(id=int(userid)).first()
     if contracts.RecommendationContractRequest.CULTURE_KEY in req_json_body:
         culture = req_json_body[contracts.RecommendationContractRequest.CULTURE_KEY]
-    
+
     # take from the user table
     # city = user.city
     city = "Raleigh"
 
     if contracts.RecommendationContractRequest.GENDER_KEY in req_json_body:
-        gender = req_json_body[contracts.RecommendationContractRequest.GENDER_KEY].lower()
+        gender = req_json_body[contracts.RecommendationContractRequest.GENDER_KEY].lower(
+        )
     else:
         # take from the user table
         gender = user.gender
@@ -67,18 +59,19 @@ def get_recommendations():
     if contracts.RecommendationContractRequest.OCCASION_KEY in req_json_body:
         occasion = req_json_body[contracts.RecommendationContractRequest.OCCASION_KEY]
 
-    # Age 
+    # Age
     if contracts.RecommendationContractRequest.AGE_GROUP_KEY in req_json_body:
         ageGroup = req_json_body[contracts.RecommendationContractRequest.AGE_GROUP_KEY]
 
     from . import helper
 
     help = helper.RecommendationHelper()
-    links = help.giveRecommendations(userid=userid, gender=gender, occasion=occasion, city=city, 
+    links = help.giveRecommendations(userid=userid, gender=gender, occasion=occasion, city=city,
                                     culture=culture, ageGroup=ageGroup)
 
     recommendations = dict()
     recommendations[contracts.RecommendationContractResponse.LINKS] = []
     for link in links:
-        recommendations[contracts.RecommendationContractResponse.LINKS].append(link)
+        recommendations[contracts.RecommendationContractResponse.LINKS].append(
+            link)
     return jsonify(recommendations), 200

@@ -2,15 +2,10 @@ from flask import (
     Blueprint,
     render_template,
     request,
-    flash,
     jsonify,
-    redirect,
-    url_for,
-    session,
 )
 
-from flask_login import login_required, current_user
-from . import models
+from flask_login import current_user
 from . import db
 from . import contracts
 from .models import Favourite
@@ -19,7 +14,7 @@ import json
 favouritesbp = Blueprint("favourites", __name__)
 
 
-@favouritesbp.route("/favourites", methods=["POST","GET"])
+@favouritesbp.route("/favourites", methods=["POST", "GET"])
 # @login_required
 def favourites():
     userid = 1
@@ -40,11 +35,10 @@ def favourites():
                 curr_list.append(fav)
                 sorted_fav_list[fav["search_occasion"]] = curr_list
             else:
-                sorted_fav_list[fav["search_occasion"]] = [fav]  
-                    
-        print("hitting api")
-        return render_template("favourites.html",user=current_user, sorted_fav_list=sorted_fav_list,enumerate=enumerate)
+                sorted_fav_list[fav["search_occasion"]] = [fav]
 
+        print("hitting api")
+        return render_template("favourites.html", user=current_user, sorted_fav_list=sorted_fav_list, enumerate=enumerate)
 
     req_json_body = request.json
 
@@ -112,10 +106,10 @@ def favourites():
                 curr_list.append(fav)
                 sorted_fav_list[fav["search_occasion"]] = curr_list
             else:
-                sorted_fav_list[fav["search_occasion"]] = [fav]  
-                    
+                sorted_fav_list[fav["search_occasion"]] = [fav]
+
         print("hitting api")
-        return render_template("favourites.html",user=current_user, sorted_fav_list=sorted_fav_list,enumerate=enumerate)
+        return render_template("favourites.html", user=current_user, sorted_fav_list=sorted_fav_list, enumerate=enumerate)
 
     else:
         favourite_query = Favourite.query.filter_by(userid=int(userid))
@@ -133,5 +127,4 @@ def favourites():
         db.session.commit()
         response = dict()
         response["Message"] = "Delete Success"
-        return jsonify(response),200
-
+        return jsonify(response), 200

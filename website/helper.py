@@ -2,20 +2,21 @@
 
 from . import utils
 from . import models
-from website import preferences
 import json
-from . import contracts
 
 default_preferences = {
     "male": ["blue shirt", "black pant"],
     "female": ["blue shirt", "black pant"],
 }
 
-### module to write helper functions for APIs
+# module to write helper functions for APIs
+
+
 class PreferencesHelper:
     def givePreferences(userid, occasion):
         try:
-            preferenceObj = models.Preference.query.filter_by(userid=userid).first()
+            preferenceObj = models.Preference.query.filter_by(
+                userid=userid).first()
             preferences = json.loads(str(preferenceObj.preferences))
             if occasion in preferences:
                 return preferences[occasion]
@@ -45,8 +46,9 @@ class RecommendationHelper:
         self.searchAPIObj = utils.SearchImages()
         self.weatherHelper = WeatherHelper()
 
-    def giveRecommendations(self, userid, gender,city = None, occasion=None, culture=None, ageGroup=None):
+    def giveRecommendations(self, userid, gender, city=None, occasion=None, culture=None, ageGroup=None):
         preferences = PreferencesHelper.givePreferences(userid, occasion)
+        print(preferences)
         query_keywords = []
         weather = self.weatherHelper.getWeather(city)
         # if not preferences:
@@ -58,13 +60,14 @@ class RecommendationHelper:
 
         #     query_keywords.append(occasion)
         if gender != "":
-            query_keywords.append(" gender " + gender)   
+            query_keywords.append(" gender " + gender)
 
         if not ageGroup:
             query_keywords.append(" for " + ageGroup)
 
         if not occasion:
             occasion = "regular event"
-        query_keywords.append(" in " + weather + " weather" + " to a \"" + occasion + "\"")
-        links = self.searchAPIObj.image_search(query_keywords, culture)
+        query_keywords.append(
+            "in " + weather + " weather" + " to a " + occasion)
+        links = self.searchAPIObj.image_search(query_keywords)
         return links

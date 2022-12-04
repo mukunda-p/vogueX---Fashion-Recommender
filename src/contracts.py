@@ -1,5 +1,5 @@
 class RecommendationContractRequest:
-    #### RECOMMENDATION PAYLOAD FIELDS
+    # RECOMMENDATION PAYLOAD FIELDS
     OCCASION_KEY = "occasion"
     CITY_KEY = "city"
 
