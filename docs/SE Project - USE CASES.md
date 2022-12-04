@@ -210,3 +210,21 @@ Steps:
 2. The user should be able to get recommendations on what to wear based on the occasion he/she wants
 
 3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel. 
+
+Use Case #13:
+
+Actor : A user
+
+Actor Goal : to see the shopping results on both the results and the favorites section.
+
+Problem : As a user, I am searching for a recommendation, I have no time to go to the e-commerce websites to search for the resulted recommendation. I would like to have the shopping links right on the recommendations and in the favorites section.
+
+Steps:
+
+1. The user logs into voguex account.
+
+2. The user should be able to get recommendations on what to wear based on the occasion he/she wants
+
+3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
+
+4.  The user has to be able to find the shopping urls for the recommendation both at the results and in the favorites section after clicking the shop button.
