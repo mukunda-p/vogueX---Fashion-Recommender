@@ -9,7 +9,7 @@ Steps:
 2. The user should be able to get recommendations on what to wear based on the occasion he/she
 wants
 3. The user would input the occasion name or can put a occasion query and would get
-recommendations in the form of photos in a carousel.
+recommendations in the form of photos in a carousel. 
 
 Use Case #2
 Actor : A user
