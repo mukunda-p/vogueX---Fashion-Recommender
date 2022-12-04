@@ -158,3 +158,21 @@ Steps:
 3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
 
 4. The user should be able to see the gender specific results.
+
+Use Case #10:
+
+Actor : A user
+
+Actor Goal : to get age specific recommendations after the search.
+
+Problem : As a user, I want recommendations according to my age group.
+
+Steps:
+
+1. The user logs into voguex account.
+
+2. The user should be able to get recommendations on what to wear based on the occasion he/she wants
+
+3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
+
+4. The user should be able to see the age specific results.
