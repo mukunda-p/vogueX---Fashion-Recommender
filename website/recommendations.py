@@ -2,7 +2,6 @@ from flask import (
     Blueprint,
     jsonify,
     request,
-    session,
 )
 
 from . import contracts
@@ -45,7 +44,7 @@ def get_recommendations():
     user = models.User.query.filter_by(id=int(userid)).first()
     if contracts.RecommendationContractRequest.CULTURE_KEY in req_json_body:
         culture = req_json_body[contracts.RecommendationContractRequest.CULTURE_KEY]
-    
+
     # take from the user table
     # city = user.city
     city = "Raleigh"
@@ -60,14 +59,14 @@ def get_recommendations():
     if contracts.RecommendationContractRequest.OCCASION_KEY in req_json_body:
         occasion = req_json_body[contracts.RecommendationContractRequest.OCCASION_KEY]
 
-    # Age 
+    # Age
     if contracts.RecommendationContractRequest.AGE_GROUP_KEY in req_json_body:
         ageGroup = req_json_body[contracts.RecommendationContractRequest.AGE_GROUP_KEY]
 
     from . import helper
 
     help = helper.RecommendationHelper()
-    links = help.giveRecommendations(userid=userid, gender=gender, occasion=occasion, city=city, 
+    links = help.giveRecommendations(userid=userid, gender=gender, occasion=occasion, city=city,
                                     culture=culture, ageGroup=ageGroup)
 
     recommendations = dict()

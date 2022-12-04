@@ -46,8 +46,9 @@ class RecommendationHelper:
         self.searchAPIObj = utils.SearchImages()
         self.weatherHelper = WeatherHelper()
 
-    def giveRecommendations(self, userid, gender,city = None, occasion=None, culture=None, ageGroup=None):
+    def giveRecommendations(self, userid, gender, city=None, occasion=None, culture=None, ageGroup=None):
         preferences = PreferencesHelper.givePreferences(userid, occasion)
+        print(preferences)
         query_keywords = []
         weather = self.weatherHelper.getWeather(city)
         # if not preferences:
@@ -59,7 +60,7 @@ class RecommendationHelper:
 
         #     query_keywords.append(occasion)
         if gender != "":
-            query_keywords.append(" gender " + gender)   
+            query_keywords.append(" gender " + gender)
 
         if not ageGroup:
             query_keywords.append(" for " + ageGroup)

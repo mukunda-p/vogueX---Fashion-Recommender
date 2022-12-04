@@ -6,6 +6,7 @@ class ErrorCodes:
 class SessionParameters:
     USERID = "userid"
 
+
 class RecommendationContractRequest:
     # RECOMMENDATION PAYLOAD FIELDS
     OCCASION_KEY = "occasion"
