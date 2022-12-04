@@ -2,20 +2,21 @@
 
 from . import utils
 from . import models
-from website import preferences
 import json
-from . import contracts
 
 default_preferences = {
     "male": ["blue shirt", "black pant"],
     "female": ["blue shirt", "black pant"],
 }
 
-### module to write helper functions for APIs
+# module to write helper functions for APIs
+
+
 class PreferencesHelper:
     def givePreferences(userid, occasion):
         try:
-            preferenceObj = models.Preference.query.filter_by(userid=userid).first()
+            preferenceObj = models.Preference.query.filter_by(
+                userid=userid).first()
             preferences = json.loads(str(preferenceObj.preferences))
             if occasion in preferences:
                 return preferences[occasion]
@@ -65,6 +66,7 @@ class RecommendationHelper:
 
         if not occasion:
             occasion = "regular event"
-        query_keywords.append(" in " + weather + " weather" + " to a \"" + occasion + "\"")
-        links = self.searchAPIObj.image_search(query_keywords, culture)
+        query_keywords.append(
+            "in " + weather + " weather" + " to a " + occasion)
+        links = self.searchAPIObj.image_search(query_keywords)
         return links

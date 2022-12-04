@@ -1,5 +1,3 @@
-import imp
-from defer import return_value
 from google_images_search import GoogleImagesSearch
 
 

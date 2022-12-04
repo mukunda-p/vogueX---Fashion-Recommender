@@ -1,6 +1,5 @@
-from flask import Flask, g
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from os import path
 from flask_login import LoginManager
 
 db = SQLAlchemy()
@@ -15,7 +14,7 @@ def create_app(test_conifg=None):
 
     app.config[
         "SQLALCHEMY_DATABASE_URI"
-    ] = "mysql+pymysql://root:WolfPack1234@localhost/fashion"
+    ] = "mysql+pymysql://root:password@localhost:3300/fashion"
 
     if test_conifg:
         app.config["SECRET_KEY"] = test_conifg["SECRET_KEY"]
@@ -28,12 +27,14 @@ def create_app(test_conifg=None):
 
     from . import preferences
     from . import recommendations
+    from . import shopping
 
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
     app.register_blueprint(favouritesbp, url_prefix="/")
     app.register_blueprint(preferences.preferencesbp)
     app.register_blueprint(recommendations.recommendationsbp)
+    app.register_blueprint(shopping.shoppingbp)
 
     from .models import User
 

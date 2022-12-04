@@ -1,18 +1,9 @@
-import functools
 import contracts
 from flask import (
     Blueprint,
-    flash,
-    g,
     jsonify,
-    redirect,
-    render_template,
-    request,
-    session,
-    url_for,
     request,
 )
-from werkzeug.security import check_password_hash, generate_password_hash
 
 recommendationsbp = Blueprint("recommendationsbp", __name__, url_prefix="/v1/")
 

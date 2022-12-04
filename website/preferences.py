@@ -1,19 +1,12 @@
-import functools
 import json
-import re
 from flask import (
     Blueprint,
     flash,
-    g,
     jsonify,
-    redirect,
     render_template,
-    request,
     session,
-    url_for,
     request,
 )
-from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_required, current_user
 
 from website import contracts
@@ -87,6 +80,7 @@ def get_preferences():
             ],
         }
     }
+    print(preferences)
 
     if contracts.SessionParameters.USERID not in session:
         return (
@@ -98,9 +92,10 @@ def get_preferences():
             ),
             403,
         )
-    ### query the preferences table and check if preferences have been saved or not
+    # query the preferences table and check if preferences have been saved or not
     userid = session[contracts.SessionParameters.USERID]
-    preferencesObj = models.Preference.query.filter_by(userid=int(userid)).first()
+    preferencesObj = models.Preference.query.filter_by(
+        userid=int(userid)).first()
     if not preferencesObj:
         return (
             jsonify(
@@ -115,35 +110,6 @@ def get_preferences():
     userpreferences = preferencesObj.preferences
     response = json.loads(userpreferences)
     return jsonify(response), 200
-
-
-"""
-Request : 
-
-{
-    "preferences" : {
-        "formal" :  [{
-                "type" : "suit",
-                "color" : "black",
-                
-            }],
-        "beach" : [{
-                "type" : "tshirt",
-                "color" : "blue",
-            }],
-        "date" :[{
-                "type" : "shirt",
-                "color" : "navy-blue",
-            }]
-    }
-}
-
-Response : 
-{
-    "status_code" : 200,
-}
-
-"""
 
 
 def build_json(formData):
@@ -178,7 +144,8 @@ def post_preferences():
     if contracts.PreferenceContractRequest.PREFERENCES in req:
         user_preferences = req[contracts.PreferenceContractRequest.PREFERENCES]
 
-    preferenceObject = models.Preference.query.filter_by(userid=int(userid)).first()
+    preferenceObject = models.Preference.query.filter_by(
+        userid=int(userid)).first()
     if not preferenceObject:
         preferenceObject = models.Preference(
             userid=int(userid), preferences=json.dumps(user_preferences)
