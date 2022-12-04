@@ -194,3 +194,19 @@ Steps:
 3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel.
 
 4. The user should be able to see the country/culture specific results.
+
+Use Case #12:
+
+Actor : A user
+
+Actor Goal : to get a recommendation
+
+Problem : As a user, I am going on a date tonight in future. I would be flying to a different city for a date and I donot know what the weather is like and what should I pack so that I am able to wear the most appropriate dress according to the occasion.
+
+Steps:
+
+1. The user logs into voguex account.
+
+2. The user should be able to get recommendations on what to wear based on the occasion he/she wants
+
+3. The user would input the occasion name or can put a occasion query and would get recommendations in the form of photos in a carousel. 
