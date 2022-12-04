@@ -42,7 +42,8 @@ shoppingbp = Blueprint("shoppingbp", __name__, url_prefix="/")
 @shoppingbp.route("/shopping-results", methods=["POST"])
 # @login_required
 def get_shopping_results():
-    image_url=request.args.get('image_url')
+    req_json_body = request.json
+    imageUrl = req_json_body["imageUrl"]
     s=Shopping()
-    result=s.shopping_results(image_url)
+    result=s.shopping_results(imageUrl)
     return render_template("shopping.html",user=current_user, shopping_results=result,enumerate=enumerate)
