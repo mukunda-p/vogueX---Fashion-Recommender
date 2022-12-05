@@ -10,7 +10,9 @@ from website.utils import QueryBuilder, WeatherAPI
 def test_search_image_query_builder(app):
     query_key_words = [' gender female', ' in Clear weather to a "Wedding"']
     siObject = QueryBuilder()
-    query = siObject.getQueryString(query_key_words)
+    query = siObject.getQueryString(query_key_words, "Indian")
+    print("QUERY")
+    print(query)
     assert query == 'Suggested Indian outfits for  gender female  in Clear weather to a "Wedding"'
 
 
