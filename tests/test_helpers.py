@@ -11,7 +11,7 @@ def test_search_image_query_builder(app):
     query_key_words = ["date night", "first anniversary"]
     siObject = QueryBuilder()
     query = siObject.getQueryString(query_key_words)
-    assert query == "suggested dress for date night first anniversary "
+    assert query == "Suggested  outfits for date night first anniversary "
 
 
 def test_weather_api(app):
