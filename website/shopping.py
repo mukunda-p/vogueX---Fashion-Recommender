@@ -35,13 +35,7 @@ shoppingbp = Blueprint("shoppingbp", __name__, url_prefix="/")
 @shoppingbp.route("/shopping-results", methods=["GET"])
 # @login_required
 def get_shopping_results():
-    for key in request.args.keys():
-        try:
-            key = str(key)
-            if '"imageUrl"' in str(key):
-                imageUrl = key[13:-2]
-        except: 
-            pass
+    imageUrl = str(request.args.to_dict())[2:-6]
     s = Shopping()
     result = s.shopping_results(imageUrl)
     print(result)

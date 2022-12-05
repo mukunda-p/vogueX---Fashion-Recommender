@@ -63,10 +63,6 @@ $(document).ready(function(){
 			dataType: "json",
             contentType : "application/json"
 		})
-
-		
-
-
 	}
 
 	});
