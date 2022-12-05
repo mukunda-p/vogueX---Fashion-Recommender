@@ -20,9 +20,9 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             <div class="col-2">
                 <label>Culture: </label><input type="text" class="form-control hover-zoom" id="culture" name="culture"/>
             </div>
-            <div class="col-2">
+            <!-- <div class="col-2">
                 <label>City: </label><input type="text" class="form-control hover-zoom" id="city" name="city" value={{current_user.city}} />
-            </div>
+            </div> -->
             <div class="col-2">
                 <label for="gender">Gender</label>
                 <select class="custom-select" id="inputGroupSelect01" id="gender" name="gender" value={{current_user.gender}}>
@@ -43,6 +43,9 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             <div class="form-group col-2">
                 <label for="occasion">Occasion</label>
                 <input class="form-control hover-zoom" size="50" type="text" id="occasion" name="occasion" placeholder="Occasion?">
+            </div>
+            <div class="col-2">
+                <label>Date and Time: </label><input type="datetime-local" class="form-control hover-zoom" id="dateTime" name="dateTime"/>
             </div>
             <div class="form-group col-2 mt-2">
                 <br>
