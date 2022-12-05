@@ -32,12 +32,17 @@ class Shopping:
 
 shoppingbp = Blueprint("shoppingbp", __name__, url_prefix="/")
 
-
-@shoppingbp.route("/shopping-results", methods=["POST"])
+@shoppingbp.route("/shopping-results", methods=["GET"])
 # @login_required
 def get_shopping_results():
-    req_json_body = request.json
-    imageUrl = req_json_body["imageUrl"]
+    for key in request.args.keys():
+        try:
+            key = str(key)
+            if '"imageUrl"' in str(key):
+                imageUrl = key[13:-2]
+        except: 
+            pass
     s = Shopping()
     result = s.shopping_results(imageUrl)
+    print(result)
     return render_template("shopping.html",user=current_user, shopping_results=result,enumerate=enumerate)
