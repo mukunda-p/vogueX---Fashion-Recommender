@@ -20,6 +20,4 @@ jobs:
           pip install -r requirements.txt
           pytest --cov=./
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        token: 68a50c28-1cfa-4f06-9bcf-aef23c158252
+      uses: codecov/codecov-action@v2
