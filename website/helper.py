@@ -3,6 +3,8 @@
 from . import utils
 from . import models
 import json
+from . import contracts
+from datetime import datetime
 
 default_preferences = {
     "male": ["blue shirt", "black pant"],
@@ -35,9 +37,20 @@ class WeatherHelper:
     #     location = self.geolocator.geocode(city)
     #     return (location.longitude, location.latitude)
 
-    def getWeather(self, city=None):
+    def getWeather(self, city=None, date=None, time=None):
         # coordinates = self.giveLocation(city)
-        weather = self.weatherAPI.getCurrentWeather(city=city)
+        # will add proper date format after discussing the date input
+        #if date.equals(datetime.today):
+        # TODO: Change Datetime to generic 
+        try:
+            weather = self.weatherAPI.getCurrentWeather(city=city)
+        except :
+            weather = "clear sky"   
+        # 
+        # if date == today:
+        #     weather = self.weatherAPI.getCurrentWeather(city=city)
+        # else: 
+        #     weather = self.weatherAPI.getFutureWeather(city=city, date=date, time=time)
         return weather
 
 
@@ -46,11 +59,13 @@ class RecommendationHelper:
         self.searchAPIObj = utils.SearchImages()
         self.weatherHelper = WeatherHelper()
 
-    def giveRecommendations(self, userid, gender, city=None, occasion=None, culture=None, ageGroup=None):
+
+    def giveRecommendations(self, userid, gender,city = None, occasion=None, culture=None,
+                        ageGroup=None, date=None, time=None):
         preferences = PreferencesHelper.givePreferences(userid, occasion)
         print(preferences)
         query_keywords = []
-        weather = self.weatherHelper.getWeather(city)
+        weather = self.weatherHelper.getWeather(city, date, time)
         # if not preferences:
         #     query_keywords.append(gender)
         # else:

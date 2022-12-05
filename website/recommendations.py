@@ -9,13 +9,13 @@ from flask import (
     request,
     session,
     url_for,
-    request,
 )
 
 from . import contracts
 
 from werkzeug.security import check_password_hash, generate_password_hash
 from . import models
+from datetime import datetime
 
 recommendationsbp = Blueprint("recommendationsbp", __name__, url_prefix="/")
 
@@ -38,6 +38,8 @@ def get_recommendations():
     city = ""
     userid = '1'
 
+    print(req_json_body)
+
     if contracts.SessionParameters.USERID not in session:
         return (
             jsonify(
@@ -58,6 +60,15 @@ def get_recommendations():
     # take from the user table
     city = user.city
 
+    if contracts.RecommendationContractRequest.DATE_TIME_KEY in req_json_body:
+        dateTimeInput = req_json_body[contracts.RecommendationContractRequest.DATE_TIME_KEY]
+        dateInput = str(dateTimeInput).split("T")[0]
+        timeInput = str(dateTimeInput).split("T")[1]
+
+    else:
+        dateInput = datetime.today().strftime("%Y-%m-%d")
+        timeInput = datetime.now()
+
     if contracts.RecommendationContractRequest.GENDER_KEY in req_json_body:
         gender = req_json_body[contracts.RecommendationContractRequest.GENDER_KEY].lower(
         )
@@ -75,8 +86,8 @@ def get_recommendations():
     from . import helper
 
     help = helper.RecommendationHelper()
-    links = help.giveRecommendations(userid=userid, gender=gender, occasion=occasion, city=city,
-                                    culture=culture, ageGroup=ageGroup)
+    links = help.giveRecommendations(userid=userid, gender=gender, occasion=occasion, city=city, 
+                                    culture=culture, ageGroup=ageGroup, date=dateInput, time=timeInput)
 
     recommendations = dict()
     recommendations[contracts.RecommendationContractResponse.LINKS] = []
