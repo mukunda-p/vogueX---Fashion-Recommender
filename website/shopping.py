@@ -32,6 +32,7 @@ class Shopping:
 
 shoppingbp = Blueprint("shoppingbp", __name__, url_prefix="/")
 
+
 @shoppingbp.route("/shopping-results", methods=["GET"])
 # @login_required
 def get_shopping_results():
@@ -39,4 +40,4 @@ def get_shopping_results():
     s = Shopping()
     result = s.shopping_results(imageUrl)
     print(result)
-    return render_template("shopping.html",user=current_user, shopping_results=result,enumerate=enumerate)
+    return render_template("shopping.html", user=current_user, shopping_results=result, enumerate=enumerate)

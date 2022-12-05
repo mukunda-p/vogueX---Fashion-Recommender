@@ -1,15 +1,15 @@
 # from geopy.geocoders import Nominatim
 
-from . import utils
-from . import models
 import json
-from . import contracts
-from datetime import datetime
+
+from . import models
+from . import utils
 
 default_preferences = {
     "male": ["blue shirt", "black pant"],
     "female": ["blue shirt", "black pant"],
 }
+
 
 # module to write helper functions for APIs
 
@@ -40,16 +40,16 @@ class WeatherHelper:
     def getWeather(self, city=None, date=None, time=None):
         # coordinates = self.giveLocation(city)
         # will add proper date format after discussing the date input
-        #if date.equals(datetime.today):
-        # TODO: Change Datetime to generic 
+        # if date.equals(datetime.today):
+        # TODO: Change Datetime to generic
         try:
             weather = self.weatherAPI.getCurrentWeather(city=city)
-        except :
-            weather = "clear sky"   
-        # 
+        except:
+            weather = "clear sky"
+            #
         # if date == today:
         #     weather = self.weatherAPI.getCurrentWeather(city=city)
-        # else: 
+        # else:
         #     weather = self.weatherAPI.getFutureWeather(city=city, date=date, time=time)
         return weather
 
@@ -59,9 +59,8 @@ class RecommendationHelper:
         self.searchAPIObj = utils.SearchImages()
         self.weatherHelper = WeatherHelper()
 
-
-    def giveRecommendations(self, userid, gender,city = None, occasion=None, culture=None,
-                        ageGroup=None, date=None, time=None):
+    def giveRecommendations(self, userid, gender, city=None, occasion=None, culture=None,
+                            ageGroup=None, date=None, time=None):
         preferences = PreferencesHelper.givePreferences(userid, occasion)
         print(preferences)
         query_keywords = []

@@ -86,7 +86,7 @@ def get_recommendations():
     from . import helper
 
     help = helper.RecommendationHelper()
-    links = help.giveRecommendations(userid=userid, gender=gender, occasion=occasion, city=city, 
+    links = help.giveRecommendations(userid=userid, gender=gender, occasion=occasion, city=city,
                                     culture=culture, ageGroup=ageGroup, date=dateInput, time=timeInput)
 
     recommendations = dict()

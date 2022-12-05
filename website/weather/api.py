@@ -1,5 +1,3 @@
-
-
 import requests
 
 
@@ -31,7 +29,7 @@ class WeatherAPI:
 
     def getFutureWeather(self, date=None, city=None, time=None):
         url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{City}/{Date}?key={API_KEY2}".format(
-            city=city, Date=date ,API_KEY2=self.config.API_KEY2
+            city=city, Date=date, API_KEY2=self.config.API_KEY2
         )
         response = requests.request("GET", url, headers={}, data={})
         if response.status_code != 200:
@@ -43,16 +41,10 @@ class WeatherAPI:
         jsonResponse = response.json()
         hours = jsonResponse["days"]["hours"]
         x = (time.split[":"])[0]
-        index=0
+        index = 0
 
-        #hours=24
-        for t in hours :
-            if x==((hours[0].split[":"])[0]) :
-                index=t
+        # hours=24
+        for t in hours:
+            if x == ((hours[0].split[":"])[0]):
+                index = t
         return hours[index]["conditions"]
-
-
-
-
-    
-
