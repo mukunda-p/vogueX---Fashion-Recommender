@@ -20,7 +20,5 @@ jobs:
       run: |
           pip install -r requirements.txt
           python -m pytest --junitxml=test-reports/test-results.xml 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        token: 68a50c28-1cfa-4f06-9bcf-aef23c158252
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v2
