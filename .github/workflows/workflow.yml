@@ -19,8 +19,7 @@ jobs:
     - name: Run the tests
       run: |
           pip install -r requirements.txt
-          python -m pytest --junitxml=test-reports/test-results.xml --cov=./ --cov-report=xml --cov-report=html
-          coverage report
+          python -m pytest --junitxml=test-reports/test-results.xml --cov=./ 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
