@@ -1,11 +1,20 @@
+import functools
 from flask import (
     Blueprint,
+    flash,
+    g,
     jsonify,
+    redirect,
+    render_template,
+    request,
+    session,
+    url_for,
     request,
 )
 
 from . import contracts
 
+from werkzeug.security import check_password_hash, generate_password_hash
 from . import models
 
 recommendationsbp = Blueprint("recommendationsbp", __name__, url_prefix="/")
@@ -29,26 +38,25 @@ def get_recommendations():
     city = ""
     userid = '1'
 
-    # if contracts.SessionParameters.USERID not in session:
-    #     return (
-    #         jsonify(
-    #             {
-    #                 "error": "user not logged in",
-    #                 "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN,
-    #             }
-    #         ),
-    #         403,
-    #     )
+    if contracts.SessionParameters.USERID not in session:
+        return (
+            jsonify(
+                {
+                    "error": "user not logged in",
+                    "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN,
+                }
+            ),
+            403,
+        )
 
-    # userid = session[contracts.SessionParameters.USERID]
+    userid = session[contracts.SessionParameters.USERID]
 
     user = models.User.query.filter_by(id=int(userid)).first()
     if contracts.RecommendationContractRequest.CULTURE_KEY in req_json_body:
         culture = req_json_body[contracts.RecommendationContractRequest.CULTURE_KEY]
 
     # take from the user table
-    # city = user.city
-    city = "Raleigh"
+    city = user.city
 
     if contracts.RecommendationContractRequest.GENDER_KEY in req_json_body:
         gender = req_json_body[contracts.RecommendationContractRequest.GENDER_KEY].lower(
