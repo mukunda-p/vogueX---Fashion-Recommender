@@ -27,10 +27,10 @@
 |Issues are discussed before they are closed|even if you discuss in slack, need a summary statement here|
 |Chat channel: exists|Link or screenshots|
 |Test cases: a large proportion of the issues related to handling failing cases.|If a test case fails, open an issue and fix it|
-|Evidence that the whole team is using the same tools: everyone can get to all tools and files|
-|Evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)|
-|Evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)|
-|Evidence that the members of the team are working across multiple places in the code base|  |
-|Short release cycles | [4(shorts), 1(major release)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/releases) |
+|Evidence that the whole team is using the same tools: everyone can get to all tools and files| (https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/docs/Same%20Tools%20.pdf) |
+|Evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)| Everone is using GitHub,Pylint and circle CI |
+|Evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)| Testcases are passing |
+|Evidence that the members of the team are working across multiple places in the code base|  | https://github.com/mukunda-p/vogueX---Fashion-Recommender/graphs/contributors |
+|Short release cycles | [4(shorts), 1(major release)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/releases) | https://github.com/mukunda-p/vogueX---Fashion-Recommender/releases |
 
 
