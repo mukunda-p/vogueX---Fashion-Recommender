@@ -37,7 +37,7 @@
 .media-element > img {
   inline-size: 100%;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  object-fit: contain;
 }
 button > img {
 
@@ -174,4 +174,18 @@ body.modal-open .media-element{
 }
 .blendbtn{
   mix-blend-mode: luminosity;
+}
+
+.buttonA {
+  display: block;
+  width: 115px;
+  height: 40px;
+  background: #4E9CAF;
+  padding: 10px;
+  margin-top: 15px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  line-height: 25px;
 }
