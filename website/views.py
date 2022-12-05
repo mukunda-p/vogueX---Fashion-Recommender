@@ -2,16 +2,12 @@ from flask import (
     Blueprint,
     render_template,
     request,
-    flash,
-    jsonify,
     redirect,
     url_for,
-    session,
 )
 
 from flask_login import login_required, current_user
 from . import models
-from . import db
 import json
 
 views = Blueprint("views", __name__)

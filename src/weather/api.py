@@ -1,4 +1,3 @@
-import imp
 
 
 import requests
@@ -24,5 +23,5 @@ class WeatherAPI:
                     code=response.status_code
                 )
             )
-        jsonResponse = response.json()
+        response.json()
         return response.json()

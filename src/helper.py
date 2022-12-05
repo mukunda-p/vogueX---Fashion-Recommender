@@ -1,10 +1,10 @@
 from geopy.geocoders import Nominatim
-from src import weather
-from src import search
 from weather import api as wapi
 from search import api as sapi
 
-### module to write helper functions for APIs
+# module to write helper functions for APIs
+
+
 class PreferencesHelper:
     def givePreferences(userid):
         pass

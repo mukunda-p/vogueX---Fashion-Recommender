@@ -1,10 +1,10 @@
 from sqlalchemy.inspection import inspect
 
-class SerializerMixin(object):
 
+class SerializerMixin(object):
     def serialize(self):
         return {c: getattr(self, c) for c in inspect(self).attrs.keys()}
 
     @staticmethod
-    def serialize_list(l):
-        return [m.serialize() for m in l]
+    def serialize_list(elements):
+        return [m.serialize() for m in elements]

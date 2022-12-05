@@ -48,13 +48,13 @@ $(document).ready(function(){
 		let idx=buttonId.slice(4);
 		let imgsrc=document.getElementById("Myimg"+idx).src;
 		//console.log(imgsrc)
-		formattedFormData2["image_url"]=imgsrc
+		formattedFormData2["image_url"]=imgsrc.trim()
 		formData = JSON.stringify(formattedFormData2)
 		console.log(formData)
 		e.preventDefault();
 		$.ajax({
 			type:"POST",
-            url:"/shopping",
+            url:"/shopping-results?image_url="+imgsrc.trim(),
             data:formData,
             success:function(){
 				return "success"

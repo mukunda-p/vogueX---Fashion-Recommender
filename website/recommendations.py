@@ -9,7 +9,6 @@ from flask import (
     request,
     session,
     url_for,
-    request,
 )
 
 from . import contracts
@@ -33,30 +32,30 @@ def get_recommendations():
     req_json_body = request.json
     culture = ""
     occasion = ""
-    gender=""
-    ageGroup=""
-    city=""
-    userid = '3'
+    gender = ""
+    ageGroup = ""
+    city = ""
+    userid = '1'
 
-    # if contracts.SessionParameters.USERID not in session:
-    #     return (
-    #         jsonify(
-    #             {
-    #                 "error": "user not logged in",
-    #                 "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN,
-    #             }
-    #         ),
-    #         403,
-    #     )
+    if contracts.SessionParameters.USERID not in session:
+        return (
+            jsonify(
+                {
+                    "error": "user not logged in",
+                    "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN,
+                }
+            ),
+            403,
+        )
 
-    # userid = session[contracts.SessionParameters.USERID]
+    userid = session[contracts.SessionParameters.USERID]
+
     user = models.User.query.filter_by(id=int(userid)).first()
     if contracts.RecommendationContractRequest.CULTURE_KEY in req_json_body:
         culture = req_json_body[contracts.RecommendationContractRequest.CULTURE_KEY]
-    
+
     # take from the user table
-    # city = user.city
-    city = "Raleigh"
+    city = user.city
 
     if contracts.RecommendationContractRequest.DATE_KEY in req_json_body:
         dateInput = req_json_body[contracts.RecommendationContractRequest.DATE_KEY]
@@ -73,15 +72,16 @@ def get_recommendations():
         timeInput = "05:00:00"
 
     if contracts.RecommendationContractRequest.GENDER_KEY in req_json_body:
-        gender = req_json_body[contracts.RecommendationContractRequest.GENDER_KEY].lower()
+        gender = req_json_body[contracts.RecommendationContractRequest.GENDER_KEY].lower(
+        )
     else:
         # take from the user table
-        gender = user.gender
+        gender = "Female"
 
     if contracts.RecommendationContractRequest.OCCASION_KEY in req_json_body:
         occasion = req_json_body[contracts.RecommendationContractRequest.OCCASION_KEY]
 
-    # Age 
+    # Age
     if contracts.RecommendationContractRequest.AGE_GROUP_KEY in req_json_body:
         ageGroup = req_json_body[contracts.RecommendationContractRequest.AGE_GROUP_KEY]
 
@@ -94,5 +94,6 @@ def get_recommendations():
     recommendations = dict()
     recommendations[contracts.RecommendationContractResponse.LINKS] = []
     for link in links:
-        recommendations[contracts.RecommendationContractResponse.LINKS].append(link)
+        recommendations[contracts.RecommendationContractResponse.LINKS].append(
+            link)
     return jsonify(recommendations), 200
