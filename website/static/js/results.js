@@ -54,7 +54,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		$.ajax({
 			type:"POST",
-            url:"/shopping",
+            url:"/shopping-results",
             data:formData,
             success:function(){
 				return "success"

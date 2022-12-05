@@ -27,7 +27,7 @@ def get_recommendations():
     gender = ""
     ageGroup = ""
     city = ""
-    userid = '3'
+    userid = '1'
 
     # if contracts.SessionParameters.USERID not in session:
     #     return (
@@ -41,6 +41,7 @@ def get_recommendations():
     #     )
 
     # userid = session[contracts.SessionParameters.USERID]
+
     user = models.User.query.filter_by(id=int(userid)).first()
     if contracts.RecommendationContractRequest.CULTURE_KEY in req_json_body:
         culture = req_json_body[contracts.RecommendationContractRequest.CULTURE_KEY]
@@ -54,7 +55,7 @@ def get_recommendations():
         )
     else:
         # take from the user table
-        gender = user.gender
+        gender = "Female"
 
     if contracts.RecommendationContractRequest.OCCASION_KEY in req_json_body:
         occasion = req_json_body[contracts.RecommendationContractRequest.OCCASION_KEY]
