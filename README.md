@@ -89,11 +89,11 @@ http://localhost:5000/
 
 
 ## Contributors:
-- Vinita Ramnani (vjramnan)
-- Sravanth Reddy Bommana (sbomman)
-- Akash Sarda (aksarda)
-- Sidhant Arora (sarora22)
-- Arvind Srinivas Subramanian (asubram9)
+- Kalyan Karnati (kkarnat)
+- Mukund Verma Pericherla (mperich)
+- Pranavi Sharma Sanganabhatla (psangan)
+- Saketh Vangala (svangal)
+- Srihitha Reddy Kaalam (skaalam)
 
 
 
