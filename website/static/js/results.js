@@ -53,8 +53,8 @@ $(document).ready(function(){
 		console.log(formData)
 		e.preventDefault();
 		$.ajax({
-			type:"POST",
-            url:"/shopping-results",
+			type:"GET",
+            url:"/shopping-results?" + imgsrc,
             data:formData,
             success:function(){
 				return "success"
