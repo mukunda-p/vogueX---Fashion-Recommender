@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>shopping.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>shopping.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">Shopping</span><span class="p">:</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;de711d79731e559c2229268ef91800bdce6db2a1fd6961e05284070cd673775a&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://cloudapi.lykdat.com/v1/global/search&quot;</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">shopping_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_url</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">API_KEY</span><span class="p">,</span>
+            <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_url</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+        <span class="n">json_response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+        <span class="n">result_groups</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;result_groups&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">similar_products</span> <span class="o">=</span> <span class="n">result_groups</span><span class="p">[</span><span class="s2">&quot;similar_products&quot;</span><span class="p">]</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">similar_products</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">&quot;currency&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;USD&quot;</span><span class="p">):</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
