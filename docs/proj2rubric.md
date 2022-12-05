@@ -6,7 +6,7 @@
 |Bonus: Xfold improvement| In some aspect of the code; theoretical complexity, runtime, memory, developer time...|
 |Docs: what: point descriptions of each class/function (in isolation) |[Description](https://github.com/mukunda-p/vogueX---Fashion-Recommender/tree/dev/docs/point-description) |
 |Use of style checkers |[Yes](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/.github/workflows/style_checker.yml)|
-|Use of code formatters. |[Yes](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/.github/workflows/style_checker.yml)|
+|Use of code formatters. |Used PyCharm code formatters|
 |Use of syntax checkers. |[Yes](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/.github/workflows/style_checker.yml)|
 |Use of code coverage |[Yes](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/.github/workflows/workflow.yml)|
 |Other automated analysis tools|[Yes](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/.github/workflows/workflow.yml)|
