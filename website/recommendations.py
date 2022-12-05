@@ -15,6 +15,7 @@ from . import contracts
 
 from werkzeug.security import check_password_hash, generate_password_hash
 from . import models
+from datetime import datetime
 
 recommendationsbp = Blueprint("recommendationsbp", __name__, url_prefix="/")
 
@@ -59,19 +60,14 @@ def get_recommendations():
     # take from the user table
     city = user.city
 
-    if contracts.RecommendationContractRequest.DATE_KEY in req_json_body:
-        dateInput = req_json_body[contracts.RecommendationContractRequest.DATE_KEY]
-    else:
-        # take from the user table
-        # TODO: Change Date to Today form Datetime
-        dateInput = "12-02-2022"
+    if contracts.RecommendationContractRequest.DATE_TIME_KEY in req_json_body:
+        dateTimeInput = req_json_body[contracts.RecommendationContractRequest.DATE_TIME_KEY]
+        dateInput = str(dateTimeInput).split("T")[0]
+        timeInput = str(dateTimeInput).split("T")[1]
 
-    if contracts.RecommendationContractRequest.TIME_KEY in req_json_body:
-        timeInput = req_json_body[contracts.RecommendationContractRequest.TIME_KEY]
     else:
-        # take from the user table
-        # TODO: Change Date to Today form Datetime
-        timeInput = "05:00:00"
+        dateInput = datetime.today().strftime("%Y-%m-%d")
+        timeInput = datetime.now()
 
     if contracts.RecommendationContractRequest.GENDER_KEY in req_json_body:
         gender = req_json_body[contracts.RecommendationContractRequest.GENDER_KEY].lower(

@@ -27,7 +27,7 @@ class PreferencesHelper:
 
 
 class WeatherHelper:
-    def _init_(self) -> None:
+    def __init__(self) -> None:
         # self.geolocator = Nominatim(user_agent="Your_Name")
         self.weatherAPI = utils.WeatherAPI()
 
@@ -37,20 +37,25 @@ class WeatherHelper:
     #     location = self.geolocator.geocode(city)
     #     return (location.longitude, location.latitude)
 
-    def getWeather(self, city=None, date=None ):
+    def getWeather(self, city=None, date=None, time=None):
         # coordinates = self.giveLocation(city)
         # will add proper date format after discussing the date input
         #if date.equals(datetime.today):
-        # TODO: Change Datetime to generic  
-        if date == 2022-11-30:
-            weather = self.weatherAPI.getcurrentWeather(city=city)
-        else: 
-            weather = self.weatherAPI.getfutureWeather(city=city, date =date, time = time)
+        # TODO: Change Datetime to generic 
+        try:
+            weather = self.weatherAPI.getCurrentWeather(city=city)
+        except :
+            weather = "clear sky"   
+        # 
+        # if date == today:
+        #     weather = self.weatherAPI.getCurrentWeather(city=city)
+        # else: 
+        #     weather = self.weatherAPI.getFutureWeather(city=city, date=date, time=time)
         return weather
 
 
 class RecommendationHelper:
-    def _init_(self) -> None:
+    def __init__(self) -> None:
         self.searchAPIObj = utils.SearchImages()
         self.weatherHelper = WeatherHelper()
 

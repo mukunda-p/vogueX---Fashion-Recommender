@@ -11,7 +11,7 @@ class RecommendationContractRequest:
     # RECOMMENDATION PAYLOAD FIELDS
     OCCASION_KEY = "occasion"
     CITY_KEY = "city"
-    DATE_KEY = "date"
+    DATE_TIME_KEY = "dateTime"
     TIME_KEY = "time"
     AGE_GROUP_KEY = "ageGroup"
     CULTURE_KEY = "culture"
