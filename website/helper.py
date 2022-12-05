@@ -69,5 +69,5 @@ class RecommendationHelper:
             occasion = "regular event"
         query_keywords.append(
             "in " + weather + " weather" + " to a " + occasion)
-        links = self.searchAPIObj.image_search(query_keywords)
+        links = self.searchAPIObj.image_search(query_keywords, culture=culture)
         return links
