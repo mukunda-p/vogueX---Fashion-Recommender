@@ -1,4 +1,4 @@
-# Contributing to our Project 2
+# Contributing to our SE Project-2
 
 Thanks for showing your interest in contributing for our Project 2 repository. When contributing to this repository, there are certain guidelines to be followed. Please discuss the changes you wish to make with the owners of the repository via email, issue or any other mode of communication.
 
@@ -32,6 +32,29 @@ Pull requests to be made by following these goals:
   - Include documentation in the repo.
 Before your pull request being accepted the reviewers may ask you to additional changes. 
 
+### How to report bugs:
+
+This section guides you through submitting a bug report for SE-HW.
+Following this helps the maintainers of the repo and the community as a whole to understand the bug, methods to reporduce it and find bugs related to it.
+
+Before filing a bug, please make sure to:
+
+* Check the debugging guide
+* Check the FAQs, if any.
+
+### Install Git 
+Install and configure [Git](https://git-scm.com/) on your local machine.
+
+Follow the steps in the link to [Set Up Git](https://docs.github.com/en/github/getting-started-with-github/quickstart)
+
+### Install Python3
+	Use the guide to install Python3 on your system: https://docs.python.org/3/using/< your OS >.html
+
+Here, <your OS> is the Opearting System of your machine.
+
+
+### Fork Repository
+To contribute code to our product, push code to your own fork and open Pull Requests in the [GitHub repository](https://github.com/arvindsrinivas1/vogueX---Fashion-Recommender)
 # Styleguides 
 ### Git Commit messages 
   - Describe the need of change
