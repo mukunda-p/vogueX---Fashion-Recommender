@@ -37,7 +37,7 @@ shoppingbp = Blueprint("shoppingbp", __name__, url_prefix="/")
 # @login_required
 def get_shopping_results():
     req_json_body = request.json
-    imageUrl = req_json_body["imageUrl"]
+    imageUrl = req_json_body["image_url"]
     s = Shopping()
     result = s.shopping_results(imageUrl)
     return render_template("shopping.html",user=current_user, shopping_results=result,enumerate=enumerate)

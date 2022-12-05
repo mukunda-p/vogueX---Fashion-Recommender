@@ -9,7 +9,6 @@ from flask import (
     request,
     session,
     url_for,
-    request,
 )
 
 from . import contracts
