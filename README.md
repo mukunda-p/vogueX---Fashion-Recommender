@@ -11,7 +11,7 @@
 
 [![codecov](https://codecov.io/gh/mukunda-p/vogueX---Fashion-Recommender/branch/dev/graph/badge.svg?token=O08MSPU0WT)](https://codecov.io/gh/mukunda-p/vogueX---Fashion-Recommender)
 
-[![DOI](https://zenodo.org/badge/426291746.svg)](https://zenodo.org/badge/latestdoi/426291746)
+[![DOI](https://zenodo.org/badge/568223471.svg)](https://zenodo.org/badge/latestdoi/568223471)
 
 
 [![GitHub issues](https://img.shields.io/github/issues/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/issues?q=is%3Aopen)
