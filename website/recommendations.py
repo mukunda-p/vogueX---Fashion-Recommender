@@ -37,6 +37,8 @@ def get_recommendations():
     city = ""
     userid = '1'
 
+    print(req_json_body)
+
     if contracts.SessionParameters.USERID not in session:
         return (
             jsonify(

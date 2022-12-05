@@ -1,6 +1,6 @@
 # from geopy.geocoders import Nominatim
 
-#from . import utils
+from . import utils
 from . import models
 import json
 from . import contracts
@@ -55,7 +55,7 @@ class RecommendationHelper:
         self.weatherHelper = WeatherHelper()
 
 
-def giveRecommendations(self, userid, gender,city = None, occasion=None, culture=None, 
+    def giveRecommendations(self, userid, gender,city = None, occasion=None, culture=None,
                         ageGroup=None, date=None, time=None):
         preferences = PreferencesHelper.givePreferences(userid, occasion)
         print(preferences)
