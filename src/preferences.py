@@ -1,18 +1,9 @@
-import functools
 
 from flask import (
     Blueprint,
-    flash,
-    g,
     jsonify,
-    redirect,
-    render_template,
-    request,
-    session,
-    url_for,
     request,
 )
-from werkzeug.security import check_password_hash, generate_password_hash
 
 preferencesbp = Blueprint("preferences", __name__, url_prefix="/v1/")
 
@@ -40,7 +31,7 @@ def get_preferences():
 
 @preferencesbp.route("/preferences", methods=["POST"])
 def post_preferences():
-    req = request.json
+    request.json
 
     x = jsonify({"status": 200})
     return x
