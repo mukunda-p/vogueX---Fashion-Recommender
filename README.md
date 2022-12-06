@@ -31,6 +31,9 @@ Well, don’t worry. Our fashion recommender is here to save your day. This ain�
   - Season to illustrate different patterns
   - Occasion to keep you in check with the highest rated choices 
 
+There is feature of favourites where you can add your favourite attires to the favourites collection and can remove attires from the favourites.
+We suggest Shopping links from e-commerce websites for the selected attires by distinguishing prices.
+
 And if this doesn’t seem enough, one can extend this in a thousand different ways, some of which are:
 
 Integrating the health app with it to take an extra step and use the predicted menstrual cycle to enhance the outfit recommendation as to make it more comfortable.
