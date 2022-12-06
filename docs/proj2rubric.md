@@ -2,6 +2,8 @@
 
 |Notes| Marks |evidence|
 |-----| ---|---------|
+
+|Total| 88|Each rubric is marked on a scale of 0 to 3. This total is out of 90  |
 |Video1| 3|[Video.](https://drive.google.com/file/d/1q5wm0qu7Mw8gSYmC17TGPrOo3cX7KVop/view) |
 |Bonus: Xfold improvement| 3|[Yes](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/docs/Scalability%20Document.md)|
 |Docs: what: point descriptions of each class/function (in isolation) | 3|[Description](https://github.com/mukunda-p/vogueX---Fashion-Recommender/tree/dev/docs/point-description) |
