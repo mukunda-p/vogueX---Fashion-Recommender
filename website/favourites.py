@@ -3,6 +3,7 @@ from flask import (
     render_template,
     request,
     jsonify,
+    session
 )
 
 from flask_login import current_user
@@ -15,15 +16,11 @@ favouritesbp = Blueprint("favourites", __name__)
 
 
 @favouritesbp.route("/favourites", methods=["POST", "GET"])
-# @login_required
 def favourites():
-    userid = 1
     if request.method == "GET":
         favourite_query = Favourite.query.filter_by(userid=int(userid))
-        # print(favourite_list)
 
         favourite_resp = favourite_query.all()
-        # print(favourite_list[0])
 
         sorted_fav_list = {}
 
@@ -46,18 +43,17 @@ def favourites():
     search_occasion = ""
     search_weather = ""
 
-    userid = '1'
-
-    # if contracts.SessionParameters.USERID not in session:
-    #     return (
-    #         jsonify(
-    #             {
-    #                 "error": "user not logged in",
-    #                 "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN,
-    #             }
-    #         ),
-    #         403,
-    #     )
+    userid = session[contracts.SessionParameters.USERID]
+    if contracts.SessionParameters.USERID not in session:
+        return (
+            jsonify(
+                {
+                    "error": "user not logged in",
+                    "error_code": contracts.ErrorCodes.USER_NOT_LOGGED_IN,
+                }
+            ),
+            403,
+        )
 
     if contracts.FavouritesContrastRequest.FAVOURITE_URL_KEY in req_json_body:
         favourite_url = req_json_body[contracts.FavouritesContrastRequest.FAVOURITE_URL_KEY]
