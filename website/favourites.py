@@ -14,6 +14,13 @@ import json
 favouritesbp = Blueprint("favourites", __name__)
 
 #GET and POST request for favourites page
+"""
+payload = {
+    "occasion" : <occasion_name>
+    "weather" : <weather_name>
+    "favouriteUrl" : <favouriteUrl>
+}
+"""
 @favouritesbp.route("/favourites", methods=["POST", "GET"])
 # @login_required
 def favourites():
