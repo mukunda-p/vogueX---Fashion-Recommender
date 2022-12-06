@@ -3,6 +3,8 @@ from sqlalchemy.inspection import inspect
 """
 Class to serialize the SQLALchemy Object to a json object
 """
+
+
 class SerializerMixin(object):
 
     def serialize(self):

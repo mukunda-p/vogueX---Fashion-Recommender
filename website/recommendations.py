@@ -29,9 +29,10 @@ payload = {
     "dateTimeInput":<dateTimeInput> format : YYYY-MM-DDTHH:MM:SS
 }
 """
+
+
 @recommendationsbp.route("/recommendations", methods=["POST"])
 def get_recommendations():
-
     req_json_body = request.json
     culture = ""
     occasion = ""
@@ -89,7 +90,7 @@ def get_recommendations():
 
     help = helper.RecommendationHelper()
     links = help.giveRecommendations(userid=userid, gender=gender, occasion=occasion, city=city,
-                                    culture=culture, ageGroup=ageGroup, date=dateInput, time=timeInput)
+                                     culture=culture, ageGroup=ageGroup, date=dateInput, time=timeInput)
 
     recommendations = dict()
     recommendations[contracts.RecommendationContractResponse.LINKS] = []

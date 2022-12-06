@@ -14,7 +14,7 @@ import json
 
 favouritesbp = Blueprint("favourites", __name__)
 
-#GET and POST request for favourites page
+# GET and POST request for favourites page
 """
 payload = {
     "occasion" : <occasion_name>
@@ -22,8 +22,10 @@ payload = {
     "favouriteUrl" : <favouriteUrl>
 }
 """
+
+
 @favouritesbp.route("/favourites", methods=["POST", "GET"])
-def favourites():
+def favourites(userid=None):
     if request.method == "GET":
         favourite_query = Favourite.query.filter_by(userid=int(userid))
 
@@ -42,7 +44,8 @@ def favourites():
                 sorted_fav_list[fav["search_occasion"]] = [fav]
 
         print("hitting api")
-        return render_template("favourites.html", user=current_user, sorted_fav_list=sorted_fav_list, enumerate=enumerate)
+        return render_template("favourites.html", user=current_user, sorted_fav_list=sorted_fav_list,
+                               enumerate=enumerate)
 
     req_json_body = request.json
 
@@ -115,7 +118,8 @@ def favourites():
                 sorted_fav_list[fav["search_occasion"]] = [fav]
 
         print("hitting api")
-        return render_template("favourites.html", user=current_user, sorted_fav_list=sorted_fav_list, enumerate=enumerate)
+        return render_template("favourites.html", user=current_user, sorted_fav_list=sorted_fav_list,
+                               enumerate=enumerate)
 
     else:
         favourite_query = Favourite.query.filter_by(userid=int(userid))

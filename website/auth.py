@@ -5,10 +5,10 @@ from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 from . import contracts
 
-
 auth = Blueprint("auth", __name__)
 
-#Login authentication module that takes user email and password as input and validates against the database before giving authorization to the page
+
+# Login authentication module that takes user email and password as input and validates against the database before giving authorization to the page
 @auth.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -87,7 +87,8 @@ def sign_up():
     # For get request.
     return render_template("sign_up.html", user=current_user)
 
-#Profile Update function that takes phone number, city, age, user_id as input from the form data and submits a POST request to update the input values to the database.
+
+# Profile Update function that takes phone number, city, age, user_id as input from the form data and submits a POST request to update the input values to the database.
 @auth.route("/profile-update", methods=["GET", "POST"])
 def profile_update():
     # For the post request.
