@@ -41,10 +41,7 @@ We have “A style for every story” so let it be known to the world :)
 
 ## Demo
 
-https://user-images.githubusercontent.com/10449988/194678767-7240a0ff-5df3-4de9-9151-3b1187ec9bce.mp4
-
-
-[Or, click here to watch our demo!](https://drive.google.com/drive/folders/12yTi_9EIxksojSvZ26sZ6PZihPuoJ-kE) <br>
+[Click here to watch our demo!](https://drive.google.com/file/d/1q5wm0qu7Mw8gSYmC17TGPrOo3cX7KVop/view?usp=sharing) <br>
 
 
 ## 🚀 Installation Procedure
@@ -90,7 +87,7 @@ http://localhost:5000/
 
 ## Contributors:
 - Kalyan Karnati (kkarnat)
-- Mukund Verma Pericherla (mperich)
+- Mukund Varma Pericherla (mperich)
 - Pranavi Sharma Sanganabhatla (psangan)
 - Saketh Vangala (svangal)
 - Srihitha Reddy Kaalam (skaalam)
