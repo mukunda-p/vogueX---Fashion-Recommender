@@ -23,10 +23,12 @@ recommendationsbp = Blueprint("recommendationsbp", __name__, url_prefix="/")
 payload = {
     "occasion" : <occasion_name>
     "culture" : <culture>
+    "gender": <gender>
+    "ageGroup": <ageGroup>
+    "city":<city>
+    "dateTimeInput":<dateTimeInput> format : YYYY-MM-DDTHH:MM:SS
 }
 """
-
-
 @recommendationsbp.route("/recommendations", methods=["POST"])
 def get_recommendations():
 
