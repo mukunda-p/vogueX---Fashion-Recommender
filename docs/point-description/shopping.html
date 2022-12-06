@@ -20,7 +20,13 @@
       
     </div>
     <div class='code'>
-      <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span></pre></div>
+      <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">flask_login</span> <span class="kn">import</span> <span class="n">current_user</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Blueprint</span><span class="p">,</span>
+    <span class="n">render_template</span><span class="p">,</span>
+    <span class="n">request</span><span class="p">,</span>
+<span class="p">)</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -62,18 +68,50 @@
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span>
         <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">API_KEY</span><span class="p">,</span>
-            <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_url</span><span class="p">,</span>
+            <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="n">image_url</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
         <span class="n">json_response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
-        <span class="n">result_groups</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;result_groups&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+        <span class="n">result_groups</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s2">&quot;result_groups&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">similar_products</span> <span class="o">=</span> <span class="n">result_groups</span><span class="p">[</span><span class="s2">&quot;similar_products&quot;</span><span class="p">]</span>
         <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">similar_products</span><span class="p">:</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s2">&quot;currency&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;USD&quot;</span><span class="p">):</span>
                 <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">results</span>
+
+
+<span class="n">shoppingbp</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s2">&quot;shoppingbp&quot;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="nd">@shoppingbp</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/shopping-results&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>@login_required</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">get_shopping_results</span><span class="p">():</span>
+    <span class="n">imageUrl</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">Shopping</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">shopping_results</span><span class="p">(</span><span class="n">imageUrl</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;shopping.html&quot;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">current_user</span><span class="p">,</span> <span class="n">shopping_results</span><span class="o">=</span><span class="n">result</span><span class="p">,</span> <span class="nb">enumerate</span><span class="o">=</span><span class="nb">enumerate</span><span class="p">)</span>
 
 </pre></div>
     </div>
