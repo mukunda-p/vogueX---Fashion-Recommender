@@ -2,8 +2,7 @@
 
 |Notes| Marks |evidence|
 |-----| ---|---------|
-
-|Total| 88|Each rubric is marked on a scale of 0 to 3. This total is out of 90  |
+|Total| 90|Each rubric is marked on a scale of 0 to 3. This total is out of 90  |
 |Video1| 3|[Video.](https://drive.google.com/file/d/1q5wm0qu7Mw8gSYmC17TGPrOo3cX7KVop/view) |
 |Bonus: Xfold improvement| 3|[Yes](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/docs/Scalability%20Document.md)|
 |Docs: what: point descriptions of each class/function (in isolation) | 3|[Description](https://github.com/mukunda-p/vogueX---Fashion-Recommender/tree/dev/docs/point-description) |
@@ -11,14 +10,14 @@
 |Use of code formatters. |3 |Used PyCharm code formatters|
 |Use of syntax checkers. | 3|[Yes](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/.github/workflows/style_checker.yml)|
 |Use of code coverage | 3|[Yes](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/.github/workflows/workflow.yml)|
-|Other automated analysis tools| 2|[Yes](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/.github/workflows/workflow.yml)|
+|Other automated analysis tools| 3|[Yes](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/.github/workflows/workflow.yml)|
 |Workload is spread over the whole team (one team member is often Xtimes more productive than the others...  but nevertheless, here is a track record that everyone is contributing a lot)| 3| [Contribution of team members](https://github.com/mukunda-p/vogueX---Fashion-Recommender/graphs/contributors) |
-|Number of commits|3 | 176 |
-|Number of commits: by different people| 3| kalyan-karnati:32 , mukunda-p:30 , SakethVangala11:28, srihithareddy-k:22 , PranaviSan:19 |
+|Number of commits|3 | 141 |
+|Number of commits: by different people| 3| kalyan-karnati:32 , mukunda-p:35 , SakethVangala11:33, srihithareddy-k:22 , PranaviSan:19 |
 |Issues reports: there are **many**|3 | [36 issues](https://github.com/mukunda-p/vogueX---Fashion-Recommender/issues)- 0 open, 36 Closed|
 |Issues are being closed|3 |[Yes, issues are being closed once after the functionality has been added. Here is the evidence of issues being closed.](https://github.com/mukunda-p/vogueX---Fashion-Recommender/issues)|
 |DOI badge: exists|3 |[Yes](https://zenodo.org/record/5746400#.Y44PknbMK3A)|
-|Docs: doco generated, format not ugly | 2|[Yes, Used p-docs](https://github.com/mukunda-p/vogueX---Fashion-Recommender/tree/dev/docs/point-description)|
+|Docs: doco generated, format not ugly | 3|[Yes, Used p-docs](https://github.com/mukunda-p/vogueX---Fashion-Recommender/tree/dev/docs/point-description)|
 |Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z|3 | [Here are the use cases for the features.](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/docs/SE%20Project%20-%20USE%20CASES.md)| 
 |Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|3 | [Story and Motivation for the features](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/docs/Motivation_story.pdf) |
 |Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|3|[Video.](https://drive.google.com/file/d/1q5wm0qu7Mw8gSYmC17TGPrOo3cX7KVop/view), [Story and Motivation for the features](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/docs/Motivation_story.pdf)|
