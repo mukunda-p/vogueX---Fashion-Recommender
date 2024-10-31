@@ -37,6 +37,7 @@ jsonpickle==3.3.0
 keras==3.6.0
 keras-models==0.0.7
 MarkupSafe==2.1.1
+numpy==1.26.4
 packaging==21.3
 Pillow==9.2.0
 pluggy==1.0.0
