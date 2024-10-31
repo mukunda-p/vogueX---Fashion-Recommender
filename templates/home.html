@@ -1,0 +1,151 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Wardobe</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles here */
+    </style>
+    <script src="static\js\home.js"></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">JS Virtual Wardobe</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contact">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tryon">Try On</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="fashionrecommender">Fashion Recommender</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="favorites">Favorites</a>
+      </li>
+    </ul>
+  </div>
+</nav>-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">JS Virtual Wardrobe</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contact">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tryon">Try On</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="fashionrecommender">Fashion Recommender</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="favorites">Favorites</a>
+      </li>
+    </ul>
+
+    <!-- Username and Logout Dropdown -->
+    {% if username %}
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+          <i class="fas fa-user"></i> {{ username }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+      </li>
+    </ul>
+    {% endif %}
+  </div>
+</nav>
+
+<!-- Jumbotron -->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome to Virtual Wardobe!</h1>
+    <p> The Virtual Wardrobe project aims to use powerful computer vision techniques to revolutionise the process of changing clothes. Using artificial intelligence, the initiative aims
+        to automate the selection and fitting of clothing on humans with unparalleled accuracy
+        and efficiency. Using algorithms for backdrop and person segmentation, object detection,
+        landmark detection, and garment warping, the system will allow users to virtually try on
+        different clothing items in a smooth and realistic fashion. This project has the potential
+        to not only improve user experience but also streamline the fashion industry's workflows
+        by bringing a fresh method to garment customisation and personal style.
+    </p>
+    
+  </div>
+</div>
+
+<!-- Content Section -->
+<div class="container mt-5">
+    <h2>Key Project Features</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Advanced Background Segmentation</h3>
+        <p>We employ cutting-edge algorithms to seamlessly separate individuals from complex backgrounds.</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Precision Object Detection</h3>
+        <p>Our system accurately identifies and locates various clothing items, enhancing virtual try-on experiences.</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Intelligent Garment Analysis</h3>
+        <p>We meticulously analyze garment datasets to discern key features and optimize virtual fitting results.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Body Landmark Detection</h3>
+        <p>Our system detects crucial body landmarks for precise garment alignment, ensuring a perfect fit.</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Dynamic Garment Warping</h3>
+        <p>We dynamically adjust garments to match the wearer's pose and proportions, enhancing realism and fit.</p>
+      </div>
+      <!-- Add more features here if needed -->
+    </div>
+  </div>
+    
+
+<!-- Footer -->
+<footer class="footer mt-auto py-3 bg-dark text-white">
+  <div class="container">
+    <span class="text-muted">© 2024 JS Virtual Wardobe</span>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

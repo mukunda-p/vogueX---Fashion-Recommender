@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation Results</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Page Styling */
+        body {
+            background-color: #f4f6f8;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .container {
+            padding: 20px;
+        }
+        .recommendation-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .recommendation-item {
+            background: #fff;
+            border-radius: 15px;
+            border: 2px solid #007bff; /* Blue border around items */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .recommendation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .recommendation-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 3px solid #007bff;
+            transition: transform 0.3s ease;
+            border-radius: 15px 15px 0 0;
+        }
+        .recommendation-item img:hover {
+            transform: scale(1.05);
+        }
+        .btn-favorite {
+            background-color: #28a745;
+            color: #fff;
+            width: 100%;
+            border-radius: 0 0 15px 15px;
+            font-weight: bold;
+            padding: 12px 0;
+            font-size: 16px;
+            letter-spacing: 1px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .btn-favorite:hover {
+            background-color: #218838;
+            color: #e6f4ea;
+        }
+    </style>
+    <script>
+        function addToFavorites(imageLink, imageThumbnail, occasion) {
+            fetch('/process/favorites', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    link: imageLink, 
+                    thumbnail: imageThumbnail, 
+                    occasion: occasion 
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Added to favorites!');
+                } else {
+                    alert('Failed to add to favorites.');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">JS Virtual Wardrobe</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tryon">Try On</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="fashionrecommender">Fashion Recommender Result<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="favorites">Favorites</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+<div class="container">
+    <h2>Recommended Outfits</h2>
+    <div class="recommendation-container">
+        {% for image in image_data %}
+            <div class="recommendation-item">
+                <a href="{{ image.link }}" target="_blank">
+                    <img src="{{ image.thumbnail }}" class="img-fluid" alt="Outfit Recommendation">
+                </a>
+                <button class="btn btn-favorite" onclick="addToFavorites('{{ image.link }}', '{{ image.thumbnail }}', '{{ image.occasion }}')">
+                    Add to Favorites
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<footer class="footer mt-auto py-3 bg-dark text-white">
+    <div class="container text-center">
+      <span class="text-muted">© 2024 JS Virtual Wardrobe</span>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

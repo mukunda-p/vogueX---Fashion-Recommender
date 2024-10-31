@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Favorites</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Page Styling */
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+        h2 {
+            text-align: center;
+            margin: 30px 0;
+            color: #007bff;
+            font-size: 2.5rem;
+        }
+        .container {
+            padding: 20px;
+        }
+        .favorites-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .favorite-item {
+            background: linear-gradient(135deg, #ffffff, #f0f2f5);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid #e0e0e0;
+        }
+        .favorite-item:hover {
+            transform: translateY(-5px);
+        }
+        .favorite-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 3px solid #007bff;
+            max-height: 200px;
+            object-fit: cover;
+        }
+        .favorite-details {
+            padding: 15px;
+        }
+        .favorite-details p {
+            font-weight: 500;
+            color: #555;
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        .btn-danger {
+            background-color: #ff4d4d;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn-danger:hover {
+            background-color: #ff1a1a;
+        }
+        .no-favorites {
+            text-align: center;
+            color: #777;
+            font-size: 1.2rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">JS Virtual Wardrobe</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tryon">Try On</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="fashionrecommender">Fashion Recommender</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="favorites">Favorites<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+<div class="container">
+    <h2>Your Favorite Outfits</h2>
+    <div class="favorites-container">
+        {% if favorites %}
+            {% for favorite in favorites %}
+                <div class="favorite-item">
+                    <a href="{{ favorite.link }}" target="_blank">
+                        <img src="{{ favorite.thumbnail }}" alt="Favorite Outfit">
+                    </a>
+                    <div class="favorite-details">
+                        <p><strong>Occasion:</strong> {{ favorite.occasion or "Not specified" }}</p>
+                        <button class="btn btn-danger remove-favorite" data-link="{{ favorite.link }}">Remove</button>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-favorites">You have no favorites yet. Start exploring and add your favorite outfits!</p>
+        {% endif %}
+    </div>
+</div>
+
+<footer class="footer mt-auto py-3 bg-dark text-white">
+    <div class="container text-center">
+      <span class="text-muted">© 2024 JS Virtual Wardrobe</span>
+    </div>
+  </footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).on('click', '.remove-favorite', function() {
+        const link = $(this).data('link');
+
+        // Make AJAX POST request to remove favorite
+        $.ajax({
+            type: 'POST',
+            url: '/delete/favorites',
+            contentType: 'application/json',
+            data: JSON.stringify({ link: link }),
+            success: function(response) {
+                $(`button[data-link="${link}"]`).closest('.favorite-item').remove();
+                console.log(response.message);
+            },
+            error: function(xhr) {
+                console.error("Error removing favorite:", xhr.responseJSON.message);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

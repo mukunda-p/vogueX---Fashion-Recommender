@@ -1,0 +1,115 @@
+<div class="form-group">
+    {{ wtf.form_field(form.password, class_="form-control") }}
+    <div class="input-group-append">
+        <span class="input-group-text" onclick="togglePassword()"  style="cursor: pointer;">
+            <i class="fa fa-eye" id="togglePasswordIcon"></i>
+        </span>
+    </div>
+    
+</div>
+
+<div class="form-group">
+    
+    {{ wtf.form_field(form.confirm, class_="form-control") }}
+        
+    <div class="input-group-append">
+        <span class="input-group-text" onclick="togglePasswordConfirm()" style="cursor: pointer;">
+            <i class="fa fa-eye" id="togglePasswordIconConfirm"></i>
+        </span>
+    </div>
+    
+</div>
+
+<div class="d-flex justify-content-center">
+    <button type="submit"
+        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><b>Register</b></button>
+</div>
+<p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="{{url_for('home')}}"
+        class="fw-bold text-body"><u>Login here</u></a></p>
+
+</form>
+
+
+
+
+<script>
+function togglePassword() {
+const passwordField = document.querySelector('[name="password"]');
+const toggleIcon = document.getElementById("togglePasswordIcon");
+
+if (passwordField.type === "password") {
+passwordField.type = "text";
+toggleIcon.classList.remove("fa-eye");
+toggleIcon.classList.add("fa-eye-slash");
+} else {
+passwordField.type = "password";
+toggleIcon.classList.remove("fa-eye-slash");
+toggleIcon.classList.add("fa-eye");
+}
+}
+
+function togglePasswordConfirm() {
+const passwordField = document.querySelector('[name="confirm"]');
+const toggleIcon = document.getElementById("togglePasswordIconConfirm");
+
+if (passwordField.type === "password") {
+passwordField.type = "text";
+toggleIcon.classList.remove("fa-eye");
+toggleIcon.classList.add("fa-eye-slash");
+} else {
+passwordField.type = "password";
+toggleIcon.classList.remove("fa-eye-slash");
+toggleIcon.classList.add("fa-eye");
+}
+}
+</script>
+
+
+{%endblock body %}
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+    <div class="container">
+        <h2>Forgot Password</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="flashes">
+              {% for category, message in messages %}
+                <li class="alert alert-{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        
+            <form method="POST" action="/forgot_password" class="text-uppercase">
+                {{ form.hidden_tag() }}
+                <label for="username" class="custom-label">{{ form.username.label.text }}</label>
+                {{ form.username(class_="form-control input-field") }}
+                <label for="password" class="custom-label">{{ form.new_password.label.text }}</label>
+                {{ form.new_password(class_="form-control input-field") }}
+                <label for="password" class="custom-label">{{ form.confirm_password.label.text }}</label>
+                {{ form.confirm_password(class_="form-control input-field") }}
+                <button type="submit">Submit</button>
+            </form>
+    </div>
+    </div>
+</body>
+</html>

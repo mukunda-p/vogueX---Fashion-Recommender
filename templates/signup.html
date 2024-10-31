@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+{% import "bootstrap/wtf.html" as wtf %}
+
+    <body>
+        <div class="wrapper">
+          <form method="POST" action="/signup" class="text-uppercase" >
+              {{ form.hidden_tag() }}
+              <label for="username" class="custom-label">{{ form.username.label.text }}</label>
+              {{ form.username(class_="form-control input-field") }}
+              <label for="email" class="custom-label">{{ form.email.label.text }}</label>
+              {{ form.email(class_="form-control input-field") }}
+
+              <label for="password" class="custom-label">{{ form.password.label.text }}</label>
+              {{ form.password(class_="form-control input-field") }}
+              
+              <label for="password" class="custom-label">{{ form.confirm.label.text }}</label>
+              {{ form.confirm(class_="form-control input field") }}
+
+            
+            <button type="submit">Register</button>
+            <div class="register">
+              <p>Already have an account ?<a href="{{url_for('login')}}">Login</a></p>
+            </div>
+          </form>
+        </div>
+      </body>
+
+      <script>
+        document.getElementById('show-password-checkbox').addEventListener('change', function() {
+            const passwordField = document.getElementById('password-field');
+            if (this.checked) {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        });
+    </script>
+      
+      </html>
+
+                                
+                                    
+                                    

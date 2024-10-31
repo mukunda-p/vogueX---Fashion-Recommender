@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Wardrobe</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            border-bottom: 2px solid #007bff;
+        }
+        .top-buffer {
+            margin-top: 30px;
+        }
+        .form-control, .custom-select {
+            border: 1px solid #007bff;
+        }
+        .form-control:focus, .custom-select:focus {
+            border-color: #0056b3;
+            box-shadow: none;
+        }
+        .btn-rounded {
+            border-radius: 50px;
+            padding: 10px 20px;
+        }
+        .recoButton1 {
+            background-color: #007bff;
+            border: none;
+        }
+        .recoButton1:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+        /* Animation styles for the loading effect */
+        .wave {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #007bff;
+            animation: wave-animation 1.2s infinite ease-in-out;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        @keyframes wave-animation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+        /* Centering waves */
+        #center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">JS Virtual Wardrobe</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contact">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tryon">Try On</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="fashionrecommender">Fashion Recommender<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="favorites">Favorites</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container">
+    <h1 class="text-center mt-5">Welcome to Your Virtual Wardrobe!</h1>
+    <p class="text-center mb-4">Let us help you find the perfect outfit based on your preferences.</p>
+    
+    <form action="/fashionrecommender/recommendations" method="POST" id="recoForm">
+        <div class="row top-buffer">
+            <div class="col-2">
+                <label>Culture:</label>
+                <input type="text" class="form-control hover-zoom" id="culture" name="culture"/>
+            </div>
+            <div class="col-2">
+                <label for="gender">Gender</label>
+                <select class="custom-select" id="gender" name="gender">
+                    <option value="male" selected>Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div> 
+            <div class="col-2">
+                <label for="ageGroup">Age Group</label>
+                <select class="custom-select" id="ageGroup" name="ageGroup">
+                    <option value="Kids">Kids</option>
+                    <option value="Teenagers">Teenagers</option>
+                    <option value="Adults">Adults</option>
+                </select>
+            </div> 
+            <div class="form-group col-2">
+                <label for="occasion">Occasion</label>
+                <input class="form-control hover-zoom" size="50" type="text" id="occasion" name="occasion" placeholder="Occasion?">
+            </div>
+            <div class="col-2">
+                <label>Location:</label>
+                <input type="text" class="form-control hover-zoom" id="location" name="location"/>
+            </div>
+            <div class="col-2">
+                <label>Date and Time:</label>
+                <input type="datetime-local" class="form-control hover-zoom" id="dateTime" name="dateTime"/>
+            </div>
+            <div class="form-group col-12 mt-2 text-center">
+              <button id="go" name="go" type="submit" class="btn recoButton1 btn-primary btn-rounded">GO</button>
+          </div>
+          
+        </div>
+        <div class="row top-buffer">
+            <div class="col-12">
+                <div align="center" id="center" style="display:none">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<footer class="footer mt-auto py-3 bg-dark text-white">
+  <div class="container text-center">
+    <span class="text-muted">© 2024 JS Virtual Wardrobe</span>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html> 
