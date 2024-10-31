@@ -10,7 +10,7 @@ cryptography==38.0.1
 defer==1.0.4
 flake8==5.0.4
 Flask==3.0.3
-Flask-Login==0.6.2
+Flask-Login==0.6.3
 SQLAlchemy==1.4.41
 sqlalchemy-migrate==0.11.0
 sqlparse==0.4.3
