@@ -62,4 +62,6 @@ torchvision==0.17.2
 uritemplate==4.1.1
 urllib3==1.26.12
 Werkzeug==2.2.2
+WTForms==3.2.1
+xgboost==2.0.3
 zipp==3.8.1
