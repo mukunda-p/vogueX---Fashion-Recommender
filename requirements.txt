@@ -9,6 +9,7 @@ coverage==6.5.0
 cryptography==38.0.1
 defer==1.0.4
 flake8==5.0.4
+email_validator==2.2.0
 Flask==3.0.3
 Flask-Login==0.6.3
 Flask-Bootstrap==3.3.7.1
