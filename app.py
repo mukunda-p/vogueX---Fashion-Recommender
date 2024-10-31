@@ -1,33 +1,29 @@
-from flask import Flask, render_template, request, jsonify,session
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for, render_template_string, send_file, flash
+from flask_sqlalchemy import SQLAlchemy
+from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+
 import numpy as np
+import pandas as pd
+import pandas_datareader as data
 import matplotlib.pyplot as plt
 import cv2 as cv
 import base64
 import imutils
 from imutils import face_utils
 import dlib
-import subprocess
 import requests
-from datetime import datetime
 from geopy.geocoders import Nominatim
-from flask import Flask, render_template,request, session, redirect, url_for, render_template_string, send_file, flash, jsonify
-import requests
-import numpy as np
-import pandas as pd
-import pandas_datareader as data
-import webbrowser
-from flask_sqlalchemy import SQLAlchemy
-import keras.models
-from flask_bootstrap import Bootstrap
-from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, DateField, validators
-from wtforms.validators import InputRequired, Email, Length 
-from datetime import datetime
+from wtforms.validators import InputRequired, Email, Length
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+
+import keras.models
+import webbrowser
 import time
 import jsonpickle
-import wtforms
+from datetime import datetime
 
 app = Flask(__name__, static_folder='static')
 app.secret_key = 'smi'
@@ -96,7 +92,6 @@ def forgot_password():
         if user:
             
             if new_password == confirm_password:
-                # Hash the new password and update the user’s password in the database
                 hashed_password = generate_password_hash(new_password)
                 user.password = hashed_password
                 db.session.commit()
@@ -129,8 +124,6 @@ def signup():
         db.session.add(new_user)
         db.session.commit() 
         return redirect(url_for('home'))
-        #return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
-
     return render_template('signup.html',form=form)
 
 @app.route("/", methods=['GET', 'POST'])
@@ -147,7 +140,6 @@ def home():
                 return redirect(url_for('home_page'))
             else:
                 return '<h1>Invalid username or password</h1>'
-        #return '<h1>' + form.username.data + ' ' + form.password.data + '</h1>'
 
     return render_template('try.html', form=form)
 
@@ -169,14 +161,8 @@ def login():
                 return redirect(url_for('home_page'))
             else:
                 return '<h1>Invalid username or password</h1>'
-        #return '<h1>' + form.username.data + ' ' + form.password.data + '</h1>'
     
     return render_template('try.html', form=form)
-
-# @app.route("/")
-# @app.route("/home")
-# def home():
-#     return render_template("home.html")
 
 @app.route("/about")
 def about():
@@ -189,7 +175,7 @@ def contact():
 @app.route("/favorites")  
 def favorites():
     favorites_list = session.get('favorites', [])
-    print("Current favorites list:", favorites_list)  # Debug line to check data structure
+    print("Current favorites list:", favorites_list)  
     return render_template("favorites.html", favorites=favorites_list)
 
 @app.route("/process/favorites", methods=['POST'])
@@ -250,8 +236,8 @@ def fashionrecommender_cloth():
     else:
         raise ValueError("Location not found.")
 
-# Get weather data
-    w_api_key = "56627ef8f515848a6752e306c8004cc9"  # Replace with your actual OpenWeatherMap API key
+
+    w_api_key = "56627ef8f515848a6752e306c8004cc9"  
     url = f"https://api.openweathermap.org/data/2.5/weather"
     params = {
         'lat': lat,
@@ -265,12 +251,11 @@ def fashionrecommender_cloth():
     weather_data = response.json()
     print(weather_data)
 
-# Extract temperature and conditions
     temperature = weather_data['main']['temp']
     conditions = weather_data['weather'][0]['description']
     search_query = f"{culture} {gender} {age_group} outfit for {occasion} in {location} on {date} at {time} with {conditions} and {temperature}°C weather "
     
-    # SERP API request
+
     api_key = '4f0e88cd837468e305e164834844f31e5c2f4e704e16003d2cdf1b3e10abd6a9'
     params = {
         'engine': 'google',
@@ -281,12 +266,11 @@ def fashionrecommender_cloth():
     response = requests.get('https://serpapi.com/search', params=params)
     results = response.json()
     
-    # Extract image URLs
+
     image_data = [
     {"thumbnail": item['thumbnail'], "link": item['link'], "occasion":occasion}
     for item in results.get('images_results', [])[:10]  # Get top 10 images
 ]
-    # Render results in recommendationresults.html
     return render_template("recommendationresult.html", image_data=image_data)
 
 @app.route("/tryon")
@@ -324,7 +308,6 @@ def process_glasses():
     face_cascade = cv.CascadeClassifier('static\cascades\haarcascade_frontalface_alt.xml')
     eye_cascade = cv.CascadeClassifier('static\cascades\haarcascade_eye.xml')
 
-    #gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     image = cv.cvtColor(image, cv.COLOR_BGR2BGRA)
     face = face_cascade.detectMultiScale(gray, scaleFactor = 1.3, minNeighbors = 5) 
 
@@ -462,8 +445,8 @@ def process_necklace():
         shape = predictor(gray, rect)
         shape = face_utils.shape_to_np(shape)
 
-        (s1, s2) = shape[3]  # Example landmarks, adjust as needed
-        (e1, e2) = shape[13]  # Example landmarks, adjust as needed
+        (s1, s2) = shape[3]  
+        (e1, e2) = shape[13]
         dis = e1 - s1
         dim = image1.shape[1]
 
@@ -497,9 +480,7 @@ def process_necklace():
         image[point1:point1 + dim[1], s1:s1 + dim[0]] = dst
     
       
-    # image = cv.cvtColor(image, cv.COLOR_BGRA2RGB)
     processed_image = image
-    # processed_image = cv.cvtColor(processed_image, cv.COLOR_BGR2RGB)
     cv.imwrite('output-necklace.png', processed_image)
    
     _, processed_image_data = cv.imencode('.png', processed_image)
@@ -563,10 +544,8 @@ def process_earrings():
                     image[right_ear_y + i, right_ear_x + j] = right_earring_resized[i, j, :3]
     else:
         print("No face detected in the input image.")
-    
-    # image = cv.cvtColor(image, cv.COLOR_BGRA2RGB)
+
     processed_image = image
-    # processed_image = cv.cvtColor(processed_image, cv.COLOR_BGR2RGB)
     cv.imwrite('output-earrings.jpg', processed_image)
    
     _, processed_image_data = cv.imencode('.jpg', processed_image)
@@ -608,7 +587,6 @@ def process_lips():
     else:
         color_option = '7'
 
-    # print(lip_color)
 
     def get_lip_landmark(img):
         '''Finding lip landmark and return list of corresponded coordinations'''
@@ -631,7 +609,6 @@ def process_lips():
         img_original = img.copy()
         lm_points = get_lip_landmark(img_original)
 
-        # Color options
         colors = {
             "1": (83, 55, 220),   # Punch
             "2": (126, 109, 229), # Rose
@@ -690,7 +667,7 @@ def process_hairstyle():
     
     cmd_process_0 = "cd hairstyle-try-on && python inference.py --seg_model_path image_segmentation/face_segment_checkpoints_256.pth.tar --t 500 --target_image_path 1.jpg --source_image_path hairstyle.jpg"
     
-    # cmd_process = "python hairstyle-try-on/inference.py --seg_model_path hairstyle-try-on/image_segmentation/face_segment_checkpoints_256.pth.tar --t 500 --target_image_path hairstyle-try-on/hairstyle.jpg --source_image_path hairstyle-try-on/1.jpg"
+
     subprocess.call(cmd_process_0, shell=True)
     
     processed_image_path = 'hairstyle-try-on/exp/image_samples/images/original_input.png'
@@ -704,5 +681,3 @@ def process_hairstyle():
 
 if __name__ == "__main__":
     app.run(debug=True)
-# if __name__ == "__main__":
-#     app.run(debug=False, host='0.0.0.0')
