@@ -11,7 +11,9 @@ defer==1.0.4
 flake8==5.0.4
 Flask==2.2.2
 Flask-Login==0.6.2
-Flask-SQLAlchemy==2.5.1
+SQLAlchemy==1.4.41
+sqlalchemy-migrate==0.11.0
+sqlparse==0.4.3
 google-api-core==2.10.1
 google-api-python-client==2.48.0
 google-auth==2.12.0
@@ -50,4 +52,4 @@ uritemplate==4.1.1
 urllib3==1.26.12
 Werkzeug==2.2.2
 zipp==3.8.1
-flask==2.2.2
+
