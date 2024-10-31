@@ -77,6 +77,6 @@ http://localhost:5000/
 
 
 ## License
-[MIT License](https://github.com/pncnmnp/SE21-project/blob/Developer/LICENSE.md)
+[MIT License](https://github.com/systems-org/vogueX---Fashion-Recommender/blob/feature/LICENSE.md)
 
 
