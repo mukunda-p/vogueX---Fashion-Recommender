@@ -1,5 +1,7 @@
 
 ## vogueX Fashion Recommender: Outfit Recommendation System
+[![Code Quality](https://github.com/systems-org/vogueX---Fashion-Recommender/actions/workflows/code-quality.yml/badge.svg)](https://github.com/systems-org/vogueX---Fashion-Recommender/actions)
+[![Black Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 [![Build Status](https://circleci.com/gh/mukunda-p/vogueX---Fashion-Recommender/tree/dev.svg?style=svg)](https://circleci.com/gh/mukunda-p/vogueX---Fashion-Recommender/tree/dev)
 
